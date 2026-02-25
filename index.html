@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWM OS — Ваш маркетинг на автопилоте</title>
-    <link rel="icon" href="/logo-awm.png" type="image/png">
+    <title>AWM OS — AI Маркетинг будущего | Регистрация в лист ожидания</title>
+    <link rel="icon" href="public/logo-awm.png" type="image/png">
     <meta name="description"
-        content="Ultra-premium AI marketing solutions for the elite. AWM OS — AI Web Marketing Operating System.">
+        content="Автоматизация маркетинга с помощью 10 AI-ассистентов. Запишитесь в лист ожидания до официального старта">
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -594,10 +594,202 @@
                 font-size: 1.8rem !important;
             }
         }
+
+        /* ── Preloader ── */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #06060e;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .loader-logo {
+            height: 80px;
+            width: auto;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .loader-bar-container {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: #8b5cf6;
+            box-shadow: 0 0 15px #8b5cf6;
+            transition: width 0.4s ease;
+        }
+
+        .loader-text {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        body.loading {
+            overflow: hidden;
+        }
+
+        /* ── Scarcity Badge ── */
+        .scarcity-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            backdrop-filter: blur(8px);
+        }
+
+        .scarcity-dot {
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px #ef4444;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        /* ── FAQ Styles ── */
+        .faq-item {
+            margin-bottom: 12px;
+        }
+
+        .faq-button {
+            width: 100%;
+            text-align: left;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-button:hover {
+            background: rgba(139, 92, 246, 0.05);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .faq-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-content {
+            padding: 20px;
+            max-height: 300px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
     </style>
 </head>
 
-<body x-data="{ scrolled: false, menuOpen: false }" @scroll.window="scrolled = (window.pageYOffset > 20)">
+<body x-data="{ scrolled: false, menuOpen: false }" @scroll.window="scrolled = (window.pageYOffset > 20)"
+    class="loading">
+
+    <!-- ═══ PRELOADER ═══ -->
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="public/logo-awm.png" alt="AWM OS Logo" class="loader-logo">
+            <div class="loader-bar-container">
+                <div id="loader-progress" class="loader-bar"></div>
+            </div>
+            <div id="loader-percent" class="loader-text">0%</div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            const bar = document.getElementById('loader-progress');
+            const percent = document.getElementById('loader-percent');
+            let progress = 0;
+
+            const interval = setInterval(() => {
+                progress += Math.random() * 30;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        preloader.style.opacity = '0';
+                        preloader.style.visibility = 'hidden';
+                        document.body.classList.remove('loading');
+                    }, 500);
+                }
+                bar.style.width = progress + '%';
+                percent.innerText = Math.round(progress) + '%';
+            }, 100);
+        });
+    </script>
 
     <!-- ═══ GLOBAL AURORA BACKGROUND (fixed, covers entire site) ═══ -->
     <div class="aurora-bg"></div>
@@ -612,8 +804,8 @@
                 <!-- Left: brand name -->
                 <div class="header-left">
                     <a href="#" style="text-decoration:none; display:flex; align-items:center; gap:12px;">
-                        <img src="/video-logo.gif" alt="AWM OS Video Logo"
-                            style="height:32px; width:32px; object-fit:cover; border-radius:50%; filter: drop-shadow(0 0 10px rgba(139,92,246,0.6)); mix-blend-mode: screen;">
+                        <img src="public/logo-awm.png" alt="AWM OS Logo"
+                            style="height:32px; width:auto; object-fit:contain;">
                         <div style="display:flex; flex-direction:column; justify-content:center;">
                             <span
                                 style="font-size:0.9rem; font-weight:800; letter-spacing:0.05em; color:#fff; line-height:1.1;">
@@ -692,8 +884,8 @@
                     <!-- Header -->
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:56px;">
                         <a href="#" style="text-decoration:none; display:flex; align-items:center; gap:16px;">
-                            <img src="/video-logo.gif" alt="AWM OS Video Logo"
-                                style="height:44px; width:44px; object-fit:cover; border-radius:50%; filter: drop-shadow(0 0 14px rgba(139,92,246,0.6)); mix-blend-mode: screen;">
+                            <img src="public/logo-awm.png" alt="AWM OS Logo"
+                                style="height:44px; width:auto; object-fit:contain;">
                             <div style="display:flex; flex-direction:column; justify-content:center;">
                                 <span
                                     style="font-size:1.2rem; font-weight:900; color:#fff; letter-spacing:0.02em; line-height:1.1;">
@@ -746,7 +938,7 @@
 
                         <!-- Socials -->
                         <div style="display:flex; justify-content:center; gap:20px;">
-                            <a href="https://t.me/yourtelegram" target="_blank"
+                            <a href="https://t.me/AWMOS_bot" target="_blank"
                                 style="width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.7); transition:all 0.3s;"
                                 onmouseover="this.style.background='rgba(139,92,246,0.2)'; this.style.color='#fff'; this.style.transform='scale(1.1)';"
                                 onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.7)'; this.style.transform='scale(1)';">
@@ -795,9 +987,13 @@
                     class="gif-element hero-gif-desktop" loading="lazy">
 
                 <div class="hero-content-overlay">
+                    <div class="scarcity-badge">
+                        <div class="scarcity-dot"></div>
+                        Набор в закрытую бету: осталось 3 свободных места
+                    </div>
                     <h1
                         style="font-size:clamp(2rem, 6vw, 5.5rem); font-weight:900; line-height:1.0; letter-spacing:-0.01em; text-transform:uppercase; margin-bottom:20px;">
-                        AWM OS: ВАШ МАРКЕТИНГ<br><span style="color:#8b5cf6;">НА АВТОПИЛОТЕ.</span>
+                        AWM OS: Закрытый предзапуск<br><span style="color:#8b5cf6;">системы AI-маркетинга.</span>
                     </h1>
 
                     <div style="margin-bottom:32px; display:flex; justify-content:center; width:100%;">
@@ -829,20 +1025,6 @@
                         style="display:flex; flex-direction:column; gap:8px; max-width:500px; margin:0 auto 32px; text-align:left; width: 100%;">
                         <div class="feature-row">
                             <div class="feature-icon">
-                                <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2" />
-                                </svg>
-                            </div>
-                            <div>
-                                <div style="font-weight:700; font-size:0.95rem; margin-bottom:2px;">7 дней бесплатно.
-                                </div>
-                                <div style="color:rgba(255,255,255,0.45); font-size:0.8rem;">Попробуйте без риска и
-                                    обязательств.</div>
-                            </div>
-                        </div>
-                        <div class="feature-row">
-                            <div class="feature-icon">
                                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -871,7 +1053,7 @@
                         </div>
                     </div>
 
-                    <a href="https://t.me/yourtelegram" target="_blank" class="btn-ghost">EXPLORE THE SYSTEM</a>
+                    <a href="https://t.me/AWMOS_bot" target="_blank" class="btn-ghost">Вступить в Waitlist</a>
 
                     <!-- Footer links in hero -->
                     <div class="footer-links-hero"
@@ -1395,7 +1577,7 @@
                 <h2 class="glow-title"
                     style="font-size:clamp(2rem,5vw,3.5rem); font-weight:900; text-align:center; margin-bottom:64px; letter-spacing:-0.02em;">
                     <span
-                        style="background:linear-gradient(90deg, #fff, #a020f0); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">AI
+                        style="background:linear-gradient(90deg, #fff, #a020f0); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">AI
                         для создания сайтов</span><br />и Telegram мини-апп
                 </h2>
 
@@ -1513,11 +1695,10 @@
                             style="color:#8b5cf6;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">
                             Ведущий стратег</p>
                         <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;line-height:1.6;flex:1;">
-                            Специализируется на
-                            выводе локальных брендов на рынки Европы.</p>
+                            Эксперт по внедрению AI-аналитики для оптимизации маркетинговых воронок.</p>
                         <div style="border-top:1px solid rgba(255,255,255,0.08);margin-top:20px;padding-top:16px;">
-                            <p style="font-size:0.8rem;font-weight:700;line-height:1.5;">Помог 15 компаниям перейти к
-                                стабильному потоку лидов.</p>
+                            <p style="font-size:0.8rem;font-weight:700;line-height:1.5;">Спроектировал 50+ нейросетевых
+                                стратегий для Enterprise-сектора.</p>
                         </div>
                     </div>
                     <div class="glass-card" style="padding:32px; display:flex; flex-direction:column; height:100%;">
@@ -1528,13 +1709,11 @@
                         <p
                             style="color:#8b5cf6;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">
                             AI-инженер</p>
-                        <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;line-height:1.6;flex:1;">Упрощает
-                            внедрение
-                            нейросетей без IT-бэкграунда.</p>
+                        <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;line-height:1.6;flex:1;">Разработчик
+                            нейронных помощников для автоматизации клиентского пути.</p>
                         <div style="border-top:1px solid rgba(255,255,255,0.08);margin-top:20px;padding-top:16px;">
-                            <p style="font-size:0.8rem;font-weight:700;line-height:1.5;">Сократила время обработки
-                                заявок на
-                                40%.</p>
+                            <p style="font-size:0.8rem;font-weight:700;line-height:1.5;">Автоматизировал 90% рутинных
+                                задач в 30+ проектах.</p>
                         </div>
                     </div>
                     <div class="glass-card" style="padding:32px; display:flex; flex-direction:column; height:100%;">
@@ -1545,12 +1724,11 @@
                         <p
                             style="color:#8b5cf6;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">
                             Аналитик окупаемости</p>
-                        <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;line-height:1.6;flex:1;">Находит «дыры»
-                            в
-                            маркетинговом бюджете и перенаправляет средства.</p>
+                        <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;line-height:1.6;flex:1;">Специалист по
+                            Data-driven аналитике и глубокому обучению нейросетей.</p>
                         <div style="border-top:1px solid rgba(255,255,255,0.08);margin-top:20px;padding-top:16px;">
-                            <p style="font-size:0.8rem;font-weight:700;line-height:1.5;">Достиг ROI 300%+ в 12 проектах.
-                            </p>
+                            <p style="font-size:0.8rem;font-weight:700;line-height:1.5;">Увеличил точность прогнозов
+                                окупаемости на 45%.</p>
                         </div>
                     </div>
                 </div>
@@ -1695,14 +1873,67 @@
                         style="font-weight:800; color:#fff; text-shadow: 0 0 12px rgba(255,255,255,0.3);">AI-маркетинг</span>.<br /><br />
                     <span
                         style="display:inline-block; margin-top: 24px; padding: 12px 28px; background: linear-gradient(90deg, rgba(139,92,246,0.15), rgba(160,32,240,0.15)); border: 1px solid rgba(139,92,246,0.4); border-radius: 30px; color: #fff; font-size: 0.95rem; text-align: center; font-weight: 600; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(139,92,246,0.3), inset 0 0 10px rgba(160,32,240,0.1); backdrop-filter: blur(12px); line-height: 1.4;">
-                        Мы бесплатно покажем точки роста вашего бизнеса и рассчитаем потенциальную прибыль.
+                        Мы покажем точки роста вашего бизнеса и рассчитаем потенциальную прибыль от внедрения AI.
                     </span>
                 </p>
 
-                <a href="https://t.me/yourtelegram" target="_blank" class="btn-primary"
+                <a href="https://t.me/AWMOS_bot" target="_blank" class="btn-primary"
                     style="font-size:1.1rem; padding:18px 48px; box-shadow: 0 8px 32px rgba(139,92,246,0.3);">
-                    В Telegram →
+                    Уведомить о запуске →
                 </a>
+            </div>
+        </section>
+
+        <!-- ═══ FAQ ═══ -->
+        <section id="faq" style="padding:80px 24px; position:relative; z-index:2;">
+            <div style="max-width:800px; margin:0 auto;">
+                <span class="section-label" style="text-align:center; display:block;">FAQ</span>
+                <h2 style="font-size:clamp(2rem,5vw,3rem); font-weight:900; text-align:center; margin-bottom:48px;">
+                    Вопросы и <span style="color:#8b5cf6;">ответы</span>
+                </h2>
+                <div x-data="{ active: null }" class="space-y-4">
+                    <div class="faq-item" :class="{ 'active': active === 0 }">
+                        <button class="faq-button" @click="active = active === 0 ? null : 0">
+                            <span style="font-weight:700;">Насколько безопасны мои данные при использовании AI?</span>
+                            <svg class="faq-icon w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </button>
+                        <div class="faq-content">
+                            Мы используем изолированные инстансы нейросетей и корпоративные API, которые гарантируют,
+                            что ваши данные не используются для обучения публичных моделей. Ваша безопасность — наш
+                            главный приоритет.
+                        </div>
+                    </div>
+                    <div class="faq-item" :class="{ 'active': active === 1 }">
+                        <button class="faq-button" @click="active = active === 1 ? null : 1">
+                            <span style="font-weight:700;">Когда состоится официальный запуск системы?</span>
+                            <svg class="faq-icon w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </button>
+                        <div class="faq-content">
+                            Официальный релиз запланирован на ближайшие месяцы. Участники Waitlist получат ранний доступ
+                            к бета-тестированию и эксклюзивные условия подписки.
+                        </div>
+                    </div>
+                    <div class="faq-item" :class="{ 'active': active === 2 }">
+                        <button class="faq-button" @click="active = active === 2 ? null : 2">
+                            <span style="font-weight:700;">Как работает лист ожидания?</span>
+                            <svg class="faq-icon w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </button>
+                        <div class="faq-content">
+                            После регистрации в Waitlist через наш Telegram-бот вы попадаете в очередь. Мы будем
+                            уведомлять вас о прогрессе и предоставим доступ к системе порциями, чтобы гарантировать
+                            качество работы AI-ассистентов.
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1728,7 +1959,8 @@
                 <!-- Социальные Сети -->
                 <div style="display:flex; gap:24px; align-items:center;">
                     <!-- Telegram -->
-                    <a href="#" style="color:rgba(255,255,255,0.4); transition:all 0.3s;"
+                    <a href="https://t.me/AWMOS_bot" target="_blank"
+                        style="color:rgba(255,255,255,0.4); transition:all 0.3s;"
                         onmouseover="this.style.color='#8b5cf6'; this.style.transform='scale(1.1)';"
                         onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.transform='scale(1)';">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" style="width:24px; height:24px;">
