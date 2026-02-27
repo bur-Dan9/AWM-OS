@@ -2638,26 +2638,28 @@
             </div>
 
             <form id="waitlistForm">
-                <div class="form-group">
-                    <input id="leadName" type="text" placeholder="Ваше имя" required>
-                </div>
-                <div class="form-group">
-                    <input id="leadNiche" type="text" placeholder="Ниша вашего бизнеса (для Соффи)" required>
-                </div>
-                <div class="form-group">
-                    <input id="leadContact" type="text" placeholder="Telegram @username или телефон" required>
-                </div>
+                <div id="waitlistContent">
+                    <div class="form-group">
+                        <input id="leadName" type="text" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input id="leadNiche" type="text" placeholder="Ниша вашего бизнеса (для Соффи)" required>
+                    </div>
+                    <div class="form-group">
+                        <input id="leadContact" type="text" placeholder="Telegram @username или телефон" required>
+                    </div>
 
-                <button id="leadSubmit" type="submit" class="btn btn-main btn-block">
-                    СООБЩИТЬ МНЕ О ЗАПУСКЕ
-                </button>
+                    <button id="leadSubmit" type="submit" class="btn btn-main btn-block">
+                        СООБЩИТЬ МНЕ О ЗАПУСКЕ
+                    </button>
 
-                <div id="leadStatus" style="margin-top:10px; text-align:center; opacity:0.85;"></div>
+                    <div id="leadStatus" style="margin-top:10px; text-align:center; opacity:0.85;"></div>
 
-                <a id="leadDeeplink" href="#" target="_blank"
-                    style="display:none; margin-top:12px; text-align:center; font-weight:700;">
-                    Открыть бота в Telegram
-                </a>
+                    <a id="leadDeeplink" href="#" target="_blank"
+                        style="display:none; margin-top:12px; text-align:center; font-weight:700;">
+                        Открыть бота в Telegram
+                    </a>
+                </div>
             </form>
         </section>
     </div>
@@ -2669,7 +2671,6 @@
 
             const modalOverlay = document.getElementById("modalOverlay");
             const closeModalBtn = document.getElementById("closeModal");
-            const serviceBtns = document.querySelectorAll(".service-card .btn-service, .btn-primary");
 
             const form = document.getElementById("waitlistForm");
             const submitBtn = document.getElementById("leadSubmit");
@@ -2677,7 +2678,7 @@
             const deeplinkEl = document.getElementById("leadDeeplink");
 
             const openModal = (e) => {
-                if (e) e.preventDefault();
+                if (e && e.type !== "open-waitlist") e.preventDefault();
                 if (!modalOverlay) return;
 
                 modalOverlay.style.display = "flex";
@@ -2693,8 +2694,8 @@
                 setTimeout(() => { modalOverlay.style.display = "none"; }, 250);
             };
 
-            // Открытие модалки с кнопок услуг и главной CTA
-            serviceBtns.forEach(btn => btn.addEventListener("click", openModal));
+            // Открытие модалки по глобальному событию
+            window.addEventListener("open-waitlist", openModal);
 
             // Закрытие по X
             if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
@@ -2713,14 +2714,31 @@
 
                     const name = document.getElementById("leadName")?.value?.trim() || "";
                     const niche = document.getElementById("leadNiche")?.value?.trim() || "";
-                    const rawContact = document.getElementById("leadContact")?.value?.trim() || "";
+                    const rawContact = (document.getElementById("leadContact")?.value || "").trim();
+                    const normalizedContact = rawContact.replace(/\s+/g, "");
 
-                    // tg если начинается с @, иначе в contact
+                    const tgPattern = /^@[A-Za-z0-9_]{4,}$/;
+                    const tmePattern = /^https?:\/\/t\.me\/[A-Za-z0-9_]{4,}$/i;
+                    const phonePattern = /^[+]?[0-9]{7,20}$/;
+
+                    const isTgUsername = tgPattern.test(normalizedContact);
+                    const isTmeLink = tmePattern.test(normalizedContact);
+                    const isPhone = phonePattern.test(normalizedContact);
+
+                    if (!isTgUsername && !isTmeLink && !isPhone) {
+                        if (statusEl) {
+                            statusEl.textContent = "Введите корректный Telegram или номер телефона";
+                            statusEl.style.color = "#fbbf24"; // warning color
+                        }
+                        return;
+                    }
+
+                    // tg если это @username или t.me ссылку, иначе tg пустой, а contact всегда normalizedContact
                     const payload = {
                         name,
                         niche,
-                        tg: rawContact.startsWith("@") ? rawContact : "",
-                        contact: rawContact
+                        tg: (isTgUsername || isTmeLink) ? normalizedContact : "",
+                        contact: normalizedContact
                     };
 
                     const originalText = submitBtn ? submitBtn.innerText : "";
@@ -2729,18 +2747,6 @@
                         statusEl.style.color = ""; // reset error color
                     }
                     if (deeplinkEl) deeplinkEl.style.display = "none";
-
-                    // Валидация
-                    const tgPattern = /^@[A-Za-z0-9_]{4,}$/;
-                    const phonePattern = /^[+]?[0-9]{7,20}$/; // Any country phone, 7 to 20 digits
-
-                    if (!tgPattern.test(rawContact) && !phonePattern.test(rawContact)) {
-                        if (statusEl) {
-                            statusEl.textContent = "Введите корректный Telegram или номер телефона";
-                            statusEl.style.color = "#fbbf24"; // warning color
-                        }
-                        return;
-                    }
 
                     try {
                         if (submitBtn) {
@@ -2758,18 +2764,22 @@
                         const data = await res.json();
                         if (!data.ok) throw new Error(data.error || "Ошибка");
 
-                        if (submitBtn) {
-                            submitBtn.innerText = "ГОТОВО!";
-                            submitBtn.style.background = "#00ff88";
-                        }
-
-                        if (statusEl) {
-                            statusEl.textContent = "Заявка отправлена. Нажмите ниже, чтобы открыть бота и подтвердить заявку.";
-                        }
-
-                        if (deeplinkEl) {
-                            deeplinkEl.href = data.deeplink;
-                            deeplinkEl.style.display = "block";
+                        const waitlistContent = document.getElementById("waitlistContent");
+                        if (waitlistContent) {
+                            waitlistContent.innerHTML = `
+                                <div style="text-align:center; padding: 20px 0;">
+                                    <div style="font-size:3rem; margin-bottom:16px;">✅</div>
+                                    <h3 style="font-size:1.5rem; font-weight:900; color:#00f2ff; margin-bottom:16px; text-transform:uppercase;">
+                                        Заявка принята
+                                    </h3>
+                                    <p style="color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.6; margin-bottom:32px;">
+                                        Чтобы Soffi смогла прислать уведомление о запуске и показать демо сервиса — нажмите кнопку «Перейти в Telegram» и нажмите Start.
+                                    </p>
+                                    <a href="${data.deeplink || 'https://t.me/AWMOS_bot'}" target="_blank" class="btn btn-main btn-block" style="text-decoration:none; display:inline-block; box-sizing:border-box;">
+                                        ПЕРЕЙТИ В TELEGRAM
+                                    </a>
+                                </div>
+                            `;
                         }
 
                     } catch (err) {
