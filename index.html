@@ -580,18 +580,23 @@
             gap: 16px;
         }
 
-        @media (max-width: 462px) {
+        @media (max-width: 480px) {
             #stats-container {
-                grid-template-columns: 1fr;
-                gap: 12px;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 8px !important;
             }
 
             #stats-container .glass-card {
-                padding: 16px !important;
+                padding: 12px 8px !important;
             }
 
             #stats-container .glass-card>div:first-child {
-                font-size: 1.8rem !important;
+                font-size: 1.4rem !important;
+            }
+
+            #stats-container .glass-card>div:last-child {
+                font-size: 0.55rem !important;
+                letter-spacing: 0.05em !important;
             }
         }
 
