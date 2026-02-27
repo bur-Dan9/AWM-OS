@@ -828,7 +828,7 @@
                 overflow-x: auto !important;
                 scroll-snap-type: x mandatory !important;
                 gap: 16px !important;
-                padding: 10px 4% 40px !important;
+                padding: 10px 24px 16px !important;
                 margin-left: -5%;
                 margin-right: -5%;
                 scrollbar-width: none;
@@ -1320,11 +1320,11 @@
         /* Responsive Fixes for Service Menu and Audit Sections */
         @media (max-width: 767px) {
             .service-menu-section {
-                padding: 24px 16px 0 !important;
+                padding: 40px 16px 0 !important;
             }
 
             #audit {
-                padding: 24px 16px !important;
+                padding: 40px 16px !important;
                 margin: 0 !important;
             }
         }
@@ -2638,26 +2638,28 @@
             </div>
 
             <form id="waitlistForm">
-                <div class="form-group">
-                    <input id="leadName" type="text" placeholder="Ваше имя" required>
-                </div>
-                <div class="form-group">
-                    <input id="leadNiche" type="text" placeholder="Ниша вашего бизнеса (для Соффи)" required>
-                </div>
-                <div class="form-group">
-                    <input id="leadContact" type="text" placeholder="Telegram @username или телефон" required>
-                </div>
+                <div id="waitlistContent">
+                    <div class="form-group">
+                        <input id="leadName" type="text" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input id="leadNiche" type="text" placeholder="Ниша вашего бизнеса (для Соффи)" required>
+                    </div>
+                    <div class="form-group">
+                        <input id="leadContact" type="text" placeholder="Telegram @username или телефон" required>
+                    </div>
 
-                <button id="leadSubmit" type="submit" class="btn btn-main btn-block">
-                    СООБЩИТЬ МНЕ О ЗАПУСКЕ
-                </button>
+                    <button id="leadSubmit" type="submit" class="btn btn-main btn-block">
+                        СООБЩИТЬ МНЕ О ЗАПУСКЕ
+                    </button>
 
-                <div id="leadStatus" style="margin-top:10px; text-align:center; opacity:0.85;"></div>
+                    <div id="leadStatus" style="margin-top:10px; text-align:center; opacity:0.85;"></div>
 
-                <a id="leadDeeplink" href="#" target="_blank"
-                    style="display:none; margin-top:12px; text-align:center; font-weight:700;">
-                    Открыть бота в Telegram
-                </a>
+                    <a id="leadDeeplink" href="#" target="_blank"
+                        style="display:none; margin-top:12px; text-align:center; font-weight:700;">
+                        Открыть бота в Telegram
+                    </a>
+                </div>
             </form>
         </section>
     </div>
@@ -2758,24 +2760,31 @@
                         const data = await res.json();
                         if (!data.ok) throw new Error(data.error || "Ошибка");
 
-                        if (submitBtn) {
-                            submitBtn.innerText = "ГОТОВО!";
-                            submitBtn.style.background = "#00ff88";
-                        }
-
-                        if (statusEl) {
-                            statusEl.textContent = "Заявка отправлена. Нажмите ниже, чтобы открыть бота и подтвердить заявку.";
-                        }
-
-                        if (deeplinkEl) {
-                            deeplinkEl.href = data.deeplink;
-                            deeplinkEl.style.display = "block";
+                        const waitlistContent = document.getElementById("waitlistContent");
+                        if (waitlistContent) {
+                            waitlistContent.innerHTML = `
+                                <div style="text-align:center; padding: 20px 0;">
+                                    <div style="font-size:3rem; margin-bottom:16px;">✅</div>
+                                    <h3 style="font-size:1.5rem; font-weight:900; color:#00f2ff; margin-bottom:16px; text-transform:uppercase;">
+                                        Заявка принята
+                                    </h3>
+                                    <p style="color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.6; margin-bottom:32px;">
+                                        Чтобы Soffi смогла прислать уведомление о запуске и показать демо сервиса — нажмите кнопку «Перейти в Telegram» и нажмите Start.
+                                    </p>
+                                    <a href="${data.deeplink || 'https://t.me/AWMOS_bot'}" target="_blank" class="btn btn-main btn-block" style="text-decoration:none; display:inline-block; box-sizing:border-box;">
+                                        ПЕРЕЙТИ В TELEGRAM
+                                    </a>
+                                </div>
+                            `;
                         }
 
                     } catch (err) {
                         console.error(err);
 
-                        if (statusEl) statusEl.textContent = "Ошибка отправки. Попробуйте ещё раз.";
+                        if (statusEl) {
+                            statusEl.textContent = "Ошибка отправки. Попробуйте ещё раз.";
+                            statusEl.style.color = "#ef4444";
+                        }
 
                         if (submitBtn) {
                             submitBtn.innerText = originalText || "СООБЩИТЬ МНЕ О ЗАПУСКЕ";
