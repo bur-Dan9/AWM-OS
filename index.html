@@ -604,7 +604,61 @@
             }
         }
 
-        /* ── Services & Waitlist ── */
+        /* ── Modal & Waitlist ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal-container {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
         .service-menu-title {
             font-size: 1.2rem;
             font-weight: 800;
@@ -2208,62 +2262,110 @@
                 <img src="public/tggif.gif" alt="" class="gif-element" loading="lazy">
             </div>
 
-            <div style="position:relative; z-index:2; max-width:1000px; margin:0 auto; padding: 48px 0;">
+            <div x-data="{ showWaitlist: false }"
+                style="position:relative; z-index:2; max-width:1000px; margin:0 auto; padding: 48px 0;">
 
+                <!-- Restored Branding -->
+                <div style="max-width:800px; margin:0 auto 80px; padding: 0 32px;">
+                    <div
+                        style="display:inline-block; margin-bottom:16px; padding:8px 20px; border-radius:30px; background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); color:#a78bfa; font-size:0.9rem; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; box-shadow: 0 0 16px rgba(139,92,246,0.2);">
+                        Будущее уже здесь</div>
+
+                    <h2
+                        style="font-size:clamp(3.5rem, 8vw, 6rem); font-weight:900; letter-spacing:-0.04em; margin-bottom:4px; background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent;">
+                        AWM OS
+                    </h2>
+
+                    <p
+                        style="color:rgba(255,255,255,0.7); font-size:1.2rem; font-weight:700; margin-bottom:32px; letter-spacing:0.15em; text-transform:uppercase;">
+                        AI Web Marketing <span style="color:#8b5cf6;">Operating System</span>
+                    </p>
+
+                    <div
+                        style="width: 80px; height: 4px; background: linear-gradient(90deg, #8b5cf6, transparent); margin: 0 auto 32px; border-radius: 2px;">
+                    </div>
+
+                    <p
+                        style="color:rgba(255,255,255,0.9); margin-bottom:48px; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.7; font-size:1.2rem; font-weight: 500;">
+                        Хватит кормить конкурентов. <br />
+                        Запустите <span
+                            style="font-weight:800; color:#fff; text-shadow: 0 0 12px rgba(255,255,255,0.3);">AI-маркетинг</span>.<br /><br />
+                        <span
+                            style="display:inline-block; margin-top: 24px; padding: 12px 28px; background: linear-gradient(90deg, rgba(139,92,246,0.15), rgba(160,32,240,0.15)); border: 1px solid rgba(139,92,246,0.4); border-radius: 30px; color: #fff; font-size: 0.95rem; text-align: center; font-weight: 600; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(139,92,246,0.3), inset 0 0 10px rgba(160,32,240,0.1); backdrop-filter: blur(12px); line-height: 1.4;">
+                            Мы покажем точки роста вашего бизнеса и рассчитаем потенциальную прибыль от внедрения AI.
+                        </span>
+                    </p>
+
+                    <button @click="showWaitlist = true" class="btn-primary"
+                        style="font-size:1.1rem; padding:18px 48px; box-shadow: 0 8px 32px rgba(139,92,246,0.3); border:none; cursor:pointer;">
+                        Уведомить о запуске →
+                    </button>
+                </div>
+
+                <!-- Service Menu -->
                 <div class="service-menu-title">💎 МЕНЮ УСЛУГ SOFFI</div>
-
                 <div class="services-grid">
-                    <!-- Card 1 -->
                     <div class="service-card">
                         <h3>AI-Маркетинг «Автопилот»</h3>
                         <p>Подписка. Полный цикл продвижения 24/7: анализ, SMM, реклама, графики и отчеты.</p>
-                        <a href="https://t.me/AWMOS_bot" target="_blank" class="btn-service">ВЫБРАТЬ ПОДПИСКУ</a>
+                        <button @click="showWaitlist = true" class="btn-service" style="cursor:pointer;">ВЫБРАТЬ
+                            ПОДПИСКУ</button>
                     </div>
-
-                    <!-- Card 2 -->
                     <div class="service-card">
                         <h3>Разработка Экосистемы</h3>
                         <p>Услуга. Создание сайтов с полным AI-анализом и Mini Apps, синхронизированных в единый
                             организм.</p>
-                        <a href="https://t.me/AWMOS_bot" target="_blank" class="btn-service">ЗАКАЗАТЬ РАЗРАБОТКУ</a>
+                        <button @click="showWaitlist = true" class="btn-service" style="cursor:pointer;">ЗАКАЗАТЬ
+                            РАЗРАБОТКУ</button>
                     </div>
-
-                    <!-- Card 3 -->
                     <div class="service-card">
                         <h3>Глубокий AI-Аудит</h3>
                         <p>Услуга. Разовый детальный анализ рынка и ЦА для поиска точек роста силами 10+ ИИ-агентов.</p>
-                        <a href="https://t.me/AWMOS_bot" target="_blank" class="btn-service">ПОЛУЧИТЬ АУДИТ</a>
+                        <button @click="showWaitlist = true" class="btn-service" style="cursor:pointer;">ПОЛУЧИТЬ
+                            АУДИТ</button>
                     </div>
-
-                    <!-- Card 4 -->
                     <div class="service-card">
                         <h3>Content & Ads Turbo</h3>
                         <p>Услуга. Мгновенная генерация креативов и запуск промо в уникальном стиле вашего бренда.</p>
-                        <a href="https://t.me/AWMOS_bot" target="_blank" class="btn-service">АКТИВИРОВАТЬ TURBO</a>
+                        <button @click="showWaitlist = true" class="btn-service" style="cursor:pointer;">АКТИВИРОВАТЬ
+                            TURBO</button>
                     </div>
                 </div>
 
-                <!-- Waitlist Form Section -->
-                <div class="waitlist-card">
-                    <h2 class="waitlist-title">WAITLIST</h2>
-
-                    <div class="status-box">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#fbbf24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                        </svg>
-                        <p>Статус: Финальная стадия разработки. Проект находится на стадии развертывания. На данный
-                            момент мы принимаем заявки на включение в список раннего доступа. Оставьте ваши данные, и мы
-                            сообщим вам о запуске системы.</p>
+                <!-- Waitlist Modal -->
+                <template x-if="showWaitlist">
+                    <div class="modal-overlay" @click.self="showWaitlist = false">
+                        <div class="modal-container">
+                            <button class="modal-close" @click="showWaitlist = false">
+                                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                            <div class="waitlist-card" @click.stop>
+                                <h2 class="waitlist-title">WAITLIST</h2>
+                                <div class="status-box">
+                                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#fbbf24"
+                                        style="flex-shrink:0;margin-top:2px;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                    </svg>
+                                    <p>Статус: Финальная стадия разработки. Проект находится на стадии развертывания. На
+                                        данный момент мы принимаем заявки на включение в список раннего доступа.
+                                        Оставьте ваши данные, и мы сообщим вам о запуске системы.</p>
+                                </div>
+                                <form action="https://t.me/AWMOS_bot" target="_blank" class="waitlist-form">
+                                    <input type="text" placeholder="Ваше имя" required class="form-input">
+                                    <input type="text" placeholder="Ниша вашего бизнеса (для Соффи)" required
+                                        class="form-input">
+                                    <input type="text" placeholder="Telegram @username или телефон" required
+                                        class="form-input">
+                                    <button type="submit" class="btn-waitlist">СООБЩИТЬ МНЕ О ЗАПУСКЕ</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-
-                    <form action="https://t.me/AWMOS_bot" target="_blank" class="waitlist-form">
-                        <input type="text" placeholder="Ваше имя" required class="form-input">
-                        <input type="text" placeholder="Ниша вашего бизнеса (для Соффи)" required class="form-input">
-                        <input type="text" placeholder="Telegram @username или телефон" required class="form-input">
-                        <button type="submit" class="btn-waitlist">СООБЩИТЬ МНЕ О ЗАПУСКЕ</button>
-                    </form>
-                </div>
+                </template>
 
             </div>
         </section>
