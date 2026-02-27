@@ -819,7 +819,8 @@
             }
 
             .team-grid,
-            .reviews-grid {
+            .reviews-grid,
+            .trust-grid {
                 display: flex !important;
                 flex-direction: row !important;
                 overflow-x: auto !important;
@@ -831,12 +832,14 @@
             }
 
             .team-grid::-webkit-scrollbar,
-            .reviews-grid::-webkit-scrollbar {
+            .reviews-grid::-webkit-scrollbar,
+            .trust-grid::-webkit-scrollbar {
                 display: none !important;
             }
 
             .team-grid .glass-card,
-            .reviews-grid .glass-card {
+            .reviews-grid .glass-card,
+            .trust-grid .glass-card {
                 flex: 0 0 85% !important;
                 max-width: 85% !important;
                 scroll-snap-align: center !important;
@@ -1199,7 +1202,8 @@
                     style="font-size:clamp(2rem,5vw,3.5rem); font-weight:900; text-align:center; margin-bottom:48px; letter-spacing:-0.02em;">
                     Три причины <span style="color:#8b5cf6;">доверять</span>
                 </h2>
-                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;">
+                <div class="trust-grid"
+                    style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;">
                     <div class="glass-card" style="padding:32px;">
                         <div
                             style="width:44px;height:44px;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
