@@ -2,258 +2,2794 @@
 <html lang="ru" class="scroll-smooth">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AWM OS — AI Маркетинг будущего | Регистрация в лист ожидания</title>
-  <link rel="icon" href="public/logo-awm.png" type="image/png">
-  <meta name="description"
-    content="Автоматизация маркетинга с помощью 10 AI-ассистентов. Запишитесь в лист ожидания до официального старта">
-  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWM OS — AI Маркетинг будущего | Регистрация в лист ожидания</title>
+    <link rel="icon" href="public/logo-awm.png" type="image/png">
+    <meta name="description"
+        content="Автоматизация маркетинга с помощью 10 AI-ассистентов. Запишитесь в лист ожидания до официального старта">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
-  <!-- ===== ТВОИ СТИЛИ (без изменений) ===== -->
-  <style>
-    /* ... ТВОЙ ОГРОМНЫЙ CSS БЛОК ... */
-  </style>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  <style>
-    /* ... ТВОЙ ВТОРОЙ CSS БЛОК ... */
-  </style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #06060e;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ── Global Layout fixes ── */
+        body,
+        main {
+            overflow-x: hidden;
+            width: 100%;
+            background: #06060e;
+        }
+
+        .site-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ── Fixed GIF/Video Container ── */
+        .gif-container {
+            position: relative;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .gif-element {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        @media (max-width: 767px) {
+            .gif-container {
+                width: 95vw;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .gif-container {
+                max-width: 800px;
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .gif-container {
+                max-width: 1200px;
+                width: 100%;
+            }
+        }
+
+        /* ── Absolute Text Overlay for Video ── */
+        /* ── Absolute Text Overlay for Video ── */
+        .hero-content-overlay {
+            position: absolute;
+            top: 5%;
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+            padding: 0 4%;
+            text-align: center;
+        }
+
+        /* Scale down overlay content strictly on smaller screens */
+        @media (max-width: 767px) {
+            .hero-content-overlay {
+                top: 100px !important;
+            }
+
+            .hero-content-overlay h1 {
+                font-size: clamp(1.2rem, 5vw, 2rem) !important;
+                margin-bottom: 8px !important;
+            }
+
+            .hero-content-overlay p {
+                font-size: clamp(0.7rem, 2.5vw, 0.9rem) !important;
+                margin-bottom: 16px !important;
+                max-width: 90%;
+            }
+
+            .hero-content-overlay .feature-row {
+                padding: 8px 12px;
+                gap: 8px;
+                margin-bottom: 6px;
+            }
+
+            .hero-content-overlay .feature-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .hero-content-overlay .feature-row>div>div:first-child {
+                font-size: 0.8rem !important;
+            }
+
+            .hero-content-overlay .feature-row>div>div:last-child {
+                font-size: 0.65rem !important;
+            }
+
+            .hero-content-overlay .btn-ghost {
+                padding: 8px 20px;
+                font-size: 0.7rem;
+                margin-bottom: 16px;
+            }
+
+            .hero-content-overlay .footer-links-hero {
+                margin-top: 12px !important;
+                gap: 12px !important;
+                font-size: 0.65rem !important;
+            }
+
+            .hero-content-overlay .feature-rows-wrapper {
+                margin-bottom: 16px !important;
+            }
+        }
+
+        /* ── Video Container Styles ── */
+
+        .video-container {
+            width: min(355vw, 4580px);
+            position: relative;
+            margin: 0 auto;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+
+        .video-element {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        @media (min-width: 1024px) {
+            .video-container {
+                max-height: 1000px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .video-container {
+                max-height: 750px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .video-container {
+                max-height: 560px;
+            }
+        }
+
+        /* ── Brand ── */
+        .text-brand {
+            color: #8b5cf6;
+        }
+
+        .bg-brand {
+            background: #8b5cf6;
+        }
+
+        /* ── Aurora GLOBAL background (fixed to viewport) ── */
+        .aurora-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .aurora-bg::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: conic-gradient(from 180deg at 50% 50%,
+                    #0d0020 0deg,
+                    #1a0040 60deg,
+                    #2d0066 90deg,
+                    #0f0030 130deg,
+                    #06060e 180deg,
+                    #0a0020 240deg,
+                    #1a0050 300deg,
+                    #06060e 360deg);
+            animation: auroraRotate 20s linear infinite;
+        }
+
+        .aurora-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(120, 60, 220, 0.25) 0%, rgba(60, 10, 120, 0.15) 40%, transparent 70%);
+        }
+
+        @keyframes auroraRotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Subtle sweep - also fixed */
+        .aurora-sweep {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 60% 80% at 30% 60%, rgba(100, 40, 200, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 70% at 70% 30%, rgba(60, 20, 180, 0.07) 0%, transparent 60%);
+        }
+
+        /* All content sections sit above fixed bg */
+        body>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aurora-bg,
+        .aurora-sweep {
+            z-index: 0;
+        }
+
+        /* ── Glassmorphism row card ── */
+        .feature-row {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: border-color 0.2s, background 0.2s;
+            cursor: default;
+        }
+
+        .feature-row:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            background: rgba(139, 92, 246, 0.07);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── Glassmorphism section card ── */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        /* ── CTA buttons ── */
+        .btn-ghost {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 14px 36px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #fff;
+            background: transparent;
+            transition: background 0.2s, border-color 0.2s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .btn-outline-sm {
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #fff;
+            background: transparent;
+            transition: background 0.2s;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn-outline-sm:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-primary {
+            background: #8b5cf6;
+            border-radius: 8px;
+            padding: 14px 36px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #fff;
+            transition: background 0.2s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: #7c3aed;
+            transform: translateY(-1px);
+        }
+
+        /* ── Section label ── */
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #8b5cf6;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* ── Header ── */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: background 0.3s;
+        }
+
+        .site-header.scrolled {
+            background: rgba(6, 6, 14, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-center {
+            text-align: center;
+        }
+
+        .header-right {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        /* Step number accent */
+        .step-num {
+            font-size: 0.7rem;
+            font-weight: 900;
+            color: #8b5cf6;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #06060e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e1b3a;
+            border-radius: 3px;
+        }
+
+        /* Global styles for body and main overflow */
+        body,
+        main {
+            overflow-x: hidden;
+        }
+
+        /* Hero & Audit Video Wrappers */
+        #hero-deco,
+        #audit-video-deco {
+            position: relative;
+            margin: 0 auto;
+        }
+
+        #hero-deco .gif-element,
+        .hero-gif-mobile {
+            mix-blend-mode: screen;
+            opacity: 0.55;
+            display: block;
+        }
+
+        .hero-gif-mobile {
+            display: none;
+        }
+
+        #audit-video-deco {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 0;
+            opacity: 0.12;
+            width: 100%;
+            max-width: none;
+            mix-blend-mode: screen;
+            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 70%);
+            mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 70%);
+        }
+
+        #audit-video-deco .video-element {
+            opacity: 1 !important;
+            height: 100% !important;
+            object-fit: cover;
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            #audit-video-deco {
+                top: 36%;
+            }
+
+            .hero-gif-desktop {
+                display: none !important;
+            }
+
+            .hero-gif-mobile {
+                display: block;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                z-index: 1;
+            }
+
+            .hero-content-overlay {
+                position: relative;
+                top: 0;
+                width: 100%;
+                z-index: 10;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #audit-video-deco {
+                top: 27%;
+            }
+
+            .hero-gif-desktop {
+                display: none !important;
+            }
+
+            .hero-gif-mobile {
+                display: block;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                z-index: 1;
+            }
+
+            .hero-content-overlay {
+                position: relative;
+                top: 0;
+                width: 100%;
+                z-index: 10;
+            }
+        }
+
+        /* Compact text sizes for very small devices */
+        @media (max-width: 275px) {
+            .header-center span {
+                font-size: 0.9rem !important;
+            }
+
+            h1 {
+                font-size: 1.8rem !important;
+            }
+
+            h2 {
+                font-size: 1.4rem !important;
+            }
+
+            section {
+                padding: 24px 8px !important;
+            }
+
+            .glass-card {
+                padding: 12px !important;
+            }
+        }
+
+        /* Audit section and Global GIF container adjustments */
+        @media (max-width: 475px) {
+            #audit-bg-gif {
+                align-items: center;
+                justify-content: center;
+            }
+
+            #audit-bg-gif img {
+                height: 80% !important;
+            }
+        }
+
+        /* Stats Container Styles */
+        #stats-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 480px) {
+            #stats-container {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 8px !important;
+            }
+
+            #stats-container .glass-card {
+                padding: 12px 8px !important;
+            }
+
+            #stats-container .glass-card>div:first-child {
+                font-size: 1.4rem !important;
+            }
+
+            #stats-container .glass-card>div:last-child {
+                font-size: 0.55rem !important;
+                letter-spacing: 0.05em !important;
+            }
+        }
+
+        /* ── Modal & Waitlist ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal-container {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .service-menu-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #00f2ff;
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+            letter-spacing: 0.1em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+
+        .service-card {
+            background: rgba(20, 20, 35, 0.4);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .service-card:hover {
+            border-color: rgba(0, 242, 255, 0.4);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex: 1;
+        }
+
+        .btn-service {
+            display: inline-block;
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #00f2ff;
+            border-radius: 12px;
+            color: #00f2ff;
+            text-align: center;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .btn-service:hover {
+            background: #00f2ff;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+        }
+
+        .waitlist-card {
+            background: rgba(6, 6, 14, 0.6);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 30px;
+            padding: 48px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.05);
+        }
+
+        .waitlist-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #00f2ff;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
+            letter-spacing: 0.2em;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+        }
+
+        .status-box {
+            background: rgba(251, 191, 36, 0.05);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 32px;
+            display: flex;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .status-box i {
+            color: #fbbf24;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .status-box p {
+            color: #fbbf24;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px 20px;
+            color: #fff;
+            font-size: 1rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #00f2ff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-waitlist {
+            background: #00f2ff;
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            padding: 18px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 12px;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+        }
+
+        .btn-waitlist:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 35px rgba(0, 242, 255, 0.6);
+        }
+
+        @media (max-width: 767px) {
+            .services-grid {
+                display: flex !important;
+                flex-direction: row !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 16px !important;
+                padding: 10px 24px 16px !important;
+                margin-left: -5%;
+                margin-right: -5%;
+                scrollbar-width: none;
+            }
+
+            .services-grid::-webkit-scrollbar {
+                display: none;
+            }
+
+            .service-card {
+                flex: 0 0 92% !important;
+                max-width: 92% !important;
+                scroll-snap-align: center !important;
+                padding: 24px !important;
+            }
+
+            .service-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .service-card p {
+                font-size: 0.85rem;
+            }
+
+            .waitlist-card {
+                padding: 24px !important;
+                margin: 0 !important;
+            }
+
+            .waitlist-title {
+                font-size: 1.8rem;
+                letter-spacing: 0.1em;
+            }
+
+            .status-box {
+                padding: 14px;
+                gap: 10px;
+            }
+
+            .status-box p {
+                font-size: 0.75rem;
+            }
+
+            .btn-waitlist {
+                font-size: 0.9rem;
+                padding: 14px;
+            }
+        }
+
+        /* ── Preloader ── */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #000000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .loader-logo {
+            height: 90px;
+            width: auto;
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.3));
+            animation: pulse-glow 3s infinite ease-in-out;
+        }
+
+        .loader-bar-container {
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .loader-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #8b5cf6, #d946ef, #06b6d4);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.8), 0 0 5px rgba(6, 182, 212, 0.5);
+            transition: width 0.4s cubic-bezier(0.1, 0.7, 0.1, 1);
+        }
+
+        .loader-text {
+            font-size: 0.85rem;
+            color: #ffffff;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 500;
+            opacity: 0.8;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: -12px;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.2));
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.03);
+                filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.5));
+                opacity: 1;
+            }
+        }
+
+        body.loading {
+            overflow: hidden;
+        }
+
+        /* ── Scarcity Badge ── */
+        .scarcity-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            backdrop-filter: blur(8px);
+        }
+
+        .scarcity-dot {
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px #ef4444;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        /* ── FAQ Styles ── */
+        .faq-item {
+            margin-bottom: 12px;
+        }
+
+        .faq-button {
+            width: 100%;
+            text-align: left;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-button:hover {
+            background: rgba(139, 92, 246, 0.05);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .faq-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-content {
+            padding: 20px;
+            max-height: 300px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+    </style>
+    <style>
+        /* Mobile Spacing Fixes */
+        @media (max-width: 767px) {
+            section:not(#audit) {
+                padding-top: 40px !important;
+                padding-bottom: 40px !important;
+            }
+
+            #process {
+                padding-top: 30px !important;
+                padding-bottom: 40px !important;
+            }
+
+            #ai-sites {
+                padding-top: 40px !important;
+                padding-bottom: 40px !important;
+            }
+
+            #audit {
+                padding-top: 60px !important;
+                padding-bottom: 60px !important;
+            }
+
+            .hero-content-overlay h1 {
+                margin-bottom: 15px !important;
+            }
+
+            .feature-rows-wrapper {
+                margin-bottom: 24px !important;
+            }
+
+            #stats-container {
+                gap: 12px !important;
+            }
+
+            .ai-features-grid {
+                margin-bottom: 32px !important;
+                display: flex !important;
+                flex-direction: row !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 16px !important;
+                padding-bottom: 20px !important;
+                scrollbar-width: none !important;
+                -ms-overflow-style: none !important;
+            }
+
+            .ai-features-grid::-webkit-scrollbar {
+                display: none !important;
+            }
+
+            .ai-card {
+                flex: 0 0 92% !important;
+                max-width: 92% !important;
+                scroll-snap-align: center !important;
+            }
+
+            .team-grid,
+            .reviews-grid,
+            .trust-grid {
+                display: flex !important;
+                flex-direction: row !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 16px !important;
+                padding-bottom: 20px !important;
+                scrollbar-width: none !important;
+                -ms-overflow-style: none !important;
+            }
+
+            .team-grid::-webkit-scrollbar,
+            .reviews-grid::-webkit-scrollbar,
+            .trust-grid::-webkit-scrollbar {
+                display: none !important;
+            }
+
+            .team-grid .glass-card,
+            .reviews-grid .glass-card,
+            .trust-grid .glass-card {
+                flex: 0 0 92% !important;
+                max-width: 92% !important;
+                scroll-snap-align: center !important;
+                height: auto !important;
+                padding: 24px !important;
+            }
+
+            .trust-card-header {
+                display: block;
+                margin-bottom: 12px;
+            }
+
+            @media (max-width: 767px) {
+                .trust-card-header {
+                    display: flex !important;
+                    align-items: center !important;
+                    gap: 12px !important;
+                }
+
+                .trust-icon-wrap {
+                    width: 32px !important;
+                    height: 32px !important;
+                    margin-bottom: 0 !important;
+                    flex-shrink: 0;
+                }
+
+                .trust-icon-wrap svg {
+                    width: 16px !important;
+                    height: 16px !important;
+                }
+
+                .trust-card-header h3 {
+                    margin-bottom: 0 !important;
+                    font-size: 1rem !important;
+                }
+            }
+        }
+
+
+        /* ===== WAITLIST MODAL NEW STYLES ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 999999;
+            display: flex;
+            /* Overridden by inline style none */
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+        }
+
+        .waitlist-section {
+            position: relative;
+            background: #0d0d12;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.05);
+            margin: auto;
+        }
+
+        .waitlist-section.glass-card {
+            background: rgba(13, 13, 18, 0.95);
+        }
+
+        .waitlist-section h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #00f2ff;
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.6);
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .waitlist-section .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1.8rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .waitlist-section .close-btn:hover {
+            color: #fff;
+        }
+
+        .waitlist-section .warning-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: rgba(251, 191, 36, 0.05);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .waitlist-section .warning-box span {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .waitlist-section .warning-box p {
+            color: #fbbf24;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 0;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .waitlist-section .form-group {
+            margin-bottom: 16px;
+        }
+
+        .waitlist-section input {
+            width: 100%;
+            background: #15151b;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px 20px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .waitlist-section input:focus {
+            outline: none;
+            border-color: rgba(0, 242, 255, 0.8);
+            background: rgba(0, 242, 255, 0.05);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.15);
+        }
+
+        .waitlist-section input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .waitlist-section .btn-main {
+            width: 100%;
+            background: #00f2ff;
+            color: #000;
+            font-weight: 800;
+            font-size: 1.1rem;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            margin-top: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .waitlist-section .btn-main:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 35px rgba(0, 242, 255, 0.6);
+            background: #00ffff;
+        }
+
+        .waitlist-section .btn-main:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #leadDeeplink {
+            color: #00f2ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        #leadDeeplink:hover {
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+        }
+
+        /* Responsive Fixes for Service Menu and Audit Sections */
+        @media (max-width: 767px) {
+            .service-menu-section {
+                padding: 40px 16px 0 !important;
+            }
+
+            #audit {
+                padding: 40px 16px !important;
+                margin: 0 !important;
+            }
+        }
+    </style>
 </head>
 
 <body x-data="{ scrolled: false, menuOpen: false }"
-  x-init="$watch('menuOpen', val => document.body.style.overflow = val ? 'hidden' : '')"
-  @scroll.window="scrolled = (window.pageYOffset > 20)" class="loading">
+    x-init="$watch('menuOpen', val => document.body.style.overflow = val ? 'hidden' : '')"
+    @scroll.window="scrolled = (window.pageYOffset > 20)" class="loading">
 
-  <!-- ═══ PRELOADER ═══ -->
-  <div id="preloader">
-    <div class="loader-content">
-      <img src="public/logo-awm.png" alt="AWM OS Logo" class="loader-logo">
-      <div class="loader-text">INITIALIZING AWM OS...</div>
-      <div class="loader-bar-container">
-        <div id="loader-progress" class="loader-bar"></div>
-      </div>
+    <!-- ═══ PRELOADER ═══ -->
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="public/logo-awm.png" alt="AWM OS Logo" class="loader-logo">
+            <div class="loader-text">INITIALIZING AWM OS...</div>
+            <div class="loader-bar-container">
+                <div id="loader-progress" class="loader-bar"></div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <script>
-    window.addEventListener('load', () => {
-      const preloader = document.getElementById('preloader');
-      const bar = document.getElementById('loader-progress');
-      let progress = 0;
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            const bar = document.getElementById('loader-progress');
+            const percent = document.getElementById('loader-percent');
+            let progress = 0;
 
-      const interval = setInterval(() => {
-        progress += Math.random() * 15;
-        if (progress >= 100) {
-          progress = 100;
-          clearInterval(interval);
-          setTimeout(() => {
-            preloader.style.opacity = '0';
-            preloader.style.visibility = 'hidden';
-            document.body.classList.remove('loading');
-          }, 800);
-        }
-        bar.style.width = progress + '%';
-      }, 150);
-    });
-  </script>
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        preloader.style.opacity = '0';
+                        preloader.style.visibility = 'hidden';
+                        document.body.classList.remove('loading');
+                    }, 800);
+                }
+                bar.style.width = progress + '%';
+            }, 150);
+        });
+    </script>
 
-  <div class="aurora-bg"></div>
-  <div class="aurora-sweep"></div>
+    <!-- ═══ GLOBAL AURORA BACKGROUND (fixed, covers entire site) ═══ -->
+    <div class="aurora-bg"></div>
+    <div class="aurora-sweep"></div>
 
-  <main class="site-wrapper">
+    <!-- ═══ SITE WRAPPER ═══ -->
+    <main class="site-wrapper">
 
-    <!-- ===== ТВОЙ КОНТЕНТ САЙТА (без изменений) ===== -->
-    <!-- ... весь контент ... -->
+        <!-- ═══ HEADER ═══ -->
+        <header class="site-header" :class="{ scrolled }">
+            <div class="header-inner" style="display:flex; justify-content:space-between; align-items:center;">
+                <!-- Left: brand name -->
+                <div class="header-left">
+                    <a href="#" style="text-decoration:none; display:flex; align-items:center; gap:12px;">
+                        <img src="public/logo-awm.png" alt="AWM OS Logo"
+                            style="height:32px; width:auto; object-fit:contain;">
+                        <div style="display:flex; flex-direction:column; justify-content:center;">
+                            <span
+                                style="font-size:0.9rem; font-weight:800; letter-spacing:0.05em; color:#fff; line-height:1.1;">
+                                AI Web Marketing
+                            </span>
+                            <span
+                                style="font-size:0.75rem; font-weight:600; letter-spacing:0.02em; color:#8b5cf6; line-height:1.1;">
+                                Operating System
+                            </span>
+                        </div>
+                    </a>
+                </div>
 
-    <!-- GLOBAL MODAL OVERLAY -->
-    <div id="modalOverlay" class="modal-overlay" style="display: none;">
-      <section class="waitlist-section glass-card">
-        <button id="closeModal" class="close-btn" type="button">×</button>
+                <!-- Right: Hamburger -->
+                <div class="header-right" style="display:flex; gap:16px; align-items:center;">
+                    <!-- Universal Menu Button -->
+                    <button @click="menuOpen = !menuOpen" class="text-white p-1 flex"
+                        style="background:transparent; border:none; cursor:pointer; align-items:center; gap:8px;">
+                        <span
+                            style="font-size:0.9rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; display:none; @media(min-width:768px){display:block;}">Меню</span>
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M4 8h16M4 16h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
 
-        <h2>WAITLIST</h2>
+        <!-- Universal Slide-Out Menu -->
+        <style>
+            #modal-menu-panel {
+                width: 100%;
+                max-width: 450px;
+                background: rgba(6, 6, 14, 0.95);
+                border-left: 1px solid rgba(139, 92, 246, 0.2);
+                backdrop-filter: blur(24px);
+                -webkit-backdrop-filter: blur(24px);
+            }
 
-        <div class="warning-box">
-          <span>⚠️</span>
-          <p>
-            Статус: Финальная стадия разработки. Проект находится на стадии развертывания.
-            На данный момент мы принимаем заявки на включение в список раннего доступа.
-            Оставьте ваши данные, и мы сообщим вам о запуске системы.
-          </p>
+            @media (min-width: 1024px) {
+                #modal-menu-panel {
+                    max-width: 600px;
+                    background: rgba(6, 6, 14, 0.6);
+                    backdrop-filter: blur(48px);
+                    -webkit-backdrop-filter: blur(48px);
+                }
+            }
+        </style>
+
+        <div x-show="menuOpen" class="fixed inset-0 z-[100]" style="display: none;">
+
+            <!-- Backdrop -->
+            <div x-show="menuOpen" x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0" class="absolute inset-0"
+                style="background:rgba(0,0,0,0.6); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);"
+                @click="menuOpen = false">
+            </div>
+
+            <!-- Slide-out Panel -->
+            <div x-show="menuOpen" id="modal-menu-panel"
+                x-transition:enter="transition-transform ease-out duration-400 cubic-bezier(0.4, 0, 0.2, 1)"
+                x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition-transform ease-in duration-300 cubic-bezier(0.4, 0, 0.2, 1)"
+                x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
+                class="absolute top-0 right-0 bottom-0 shadow-[0_0_50px_rgba(139,92,246,0.15)] flex flex-col justify-between">
+
+                <div
+                    style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at top right, rgba(139,92,246,0.15) 0%, transparent 60%); z-index:0;">
+                </div>
+
+                <div
+                    style="display:flex; flex-direction:column; align-items:stretch; height:100%; padding:32px 32px 48px; position:relative; z-index:1; overflow-y:auto; overflow-x:hidden;">
+                    <!-- Header -->
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:56px;">
+                        <a href="#" style="text-decoration:none; display:flex; align-items:center; gap:16px;">
+                            <img src="public/logo-awm.png" alt="AWM OS Logo"
+                                style="height:44px; width:auto; object-fit:contain;">
+                            <div style="display:flex; flex-direction:column; justify-content:center;">
+                                <span
+                                    style="font-size:1.2rem; font-weight:900; color:#fff; letter-spacing:0.02em; line-height:1.1;">
+                                    AI Web Marketing
+                                </span>
+                                <span
+                                    style="font-size:0.95rem; font-weight:700; color:#8b5cf6; letter-spacing:0.02em; line-height:1.1;">
+                                    Operating System
+                                </span>
+                            </div>
+                        </a>
+                        <button @click="menuOpen = false"
+                            style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff; cursor:pointer; transition:all 0.2s;"
+                            onmouseover="this.style.background='rgba(139,92,246,0.2)'; this.style.borderColor='rgba(139,92,246,0.5)'"
+                            onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.1)'">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <nav
+                        style="display:flex; flex-direction:column; align-items:stretch; gap:24px; flex:1; margin-bottom:40px;">
+                        <a href="#process" @click="menuOpen=false"
+                            style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight:800; color:rgba(255,255,255,0.6); text-decoration:none; transition:all 0.3s; letter-spacing:-0.01em; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:16px;"
+                            onmouseover="this.style.color='#fff'; this.style.paddingLeft='16px';"
+                            onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.paddingLeft='0';">Принцип
+                            работы</a>
+                        <a href="#trust" @click="menuOpen=false"
+                            style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight:800; color:rgba(255,255,255,0.6); text-decoration:none; transition:all 0.3s; letter-spacing:-0.01em; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:16px;"
+                            onmouseover="this.style.color='#fff'; this.style.paddingLeft='16px';"
+                            onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.paddingLeft='0';">Преимущества</a>
+                        <a href="#team" @click="menuOpen=false"
+                            style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight:800; color:rgba(255,255,255,0.6); text-decoration:none; transition:all 0.3s; letter-spacing:-0.01em; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:16px;"
+                            onmouseover="this.style.color='#fff'; this.style.paddingLeft='16px';"
+                            onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.paddingLeft='0';">Команда</a>
+                        <a href="#reviews" @click="menuOpen=false"
+                            style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight:800; color:rgba(255,255,255,0.6); text-decoration:none; transition:all 0.3s; letter-spacing:-0.01em;"
+                            onmouseover="this.style.color='#fff'; this.style.paddingLeft='16px';"
+                            onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.paddingLeft='0';">Отзывы</a>
+                    </nav>
+
+                    <!-- CTA & Socials -->
+                    <div style="margin-top:auto; width:100%;">
+                        <a href="#audit" @click="menuOpen=false" class="btn-primary"
+                            style="display:flex; justify-content:center; text-align:center; padding:18px; font-size:1.1rem; font-weight:700; width:100%; box-shadow:0 8px 32px rgba(139,92,246,0.3); margin-bottom:32px;">Связаться
+                            с нами</a>
+
+                        <!-- Socials -->
+                        <div style="display:flex; justify-content:center; gap:20px;">
+                            <a href="https://t.me/AWMOS_bot" target="_blank"
+                                style="width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.7); transition:all 0.3s;"
+                                onmouseover="this.style.background='rgba(139,92,246,0.2)'; this.style.color='#fff'; this.style.transform='scale(1.1)';"
+                                onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.7)'; this.style.transform='scale(1)';">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank"
+                                style="width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.7); transition:all 0.3s;"
+                                onmouseover="this.style.background='rgba(139,92,246,0.2)'; this.style.color='#fff'; this.style.transform='scale(1.1)';"
+                                onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.7)'; this.style.transform='scale(1)';">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                        d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank"
+                                style="width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.7); transition:all 0.3s;"
+                                onmouseover="this.style.background='rgba(139,92,246,0.2)'; this.style.color='#fff'; this.style.transform='scale(1.1)';"
+                                onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.7)'; this.style.transform='scale(1)';">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <form id="waitlistForm">
-          <div id="waitlistContent">
-            <div class="form-group">
-              <input id="leadName" type="text" placeholder="Ваше имя" required>
+        <!-- ═══ HERO ═══ -->
+        <section id="hero"
+            style="position:relative; width:100%; display:flex; flex-direction:column; align-items:center; padding-top:80px; text-align:center; overflow:hidden;">
+
+            <!-- Mobile: Holographic figure GIF outside container -->
+            <img src="public/video-output-01EE7E7C-3710-4043-886A-856FD483BEFE-1.gif" alt=""
+                class="gif-element hero-gif-mobile" loading="lazy">
+
+            <!-- Holographic figure GIF with Absolute Overlay Content Inside -->
+            <div id="hero-deco" class="gif-container">
+                <img src="public/video-output-01EE7E7C-3710-4043-886A-856FD483BEFE-1.gif" alt=""
+                    class="gif-element hero-gif-desktop" loading="lazy">
+
+                <div class="hero-content-overlay">
+                    <div class="scarcity-badge">
+                        <div class="scarcity-dot"></div>
+                        Набор в закрытую бету: осталось 3 свободных места
+                    </div>
+                    <h1
+                        style="font-size:clamp(2rem, 6vw, 5.5rem); font-weight:900; line-height:1.0; letter-spacing:-0.01em; text-transform:uppercase; margin-bottom:20px;">
+                        AWM OS: ВАШ МАРКЕТИНГ<br><span style="color:#8b5cf6;">НА АВТОПИЛОТЕ.</span>
+                    </h1>
+
+                    <div style="margin-bottom:32px; display:flex; justify-content:center; width:100%;">
+                        <p style="
+                            color: rgba(255,255,255,0.85); 
+                            font-size: clamp(0.85rem, 1.5vw, 1.05rem); 
+                            font-weight: 400; 
+                            line-height: 1.6;
+                            text-align: center;
+                            background-color: rgba(6, 6, 14, 0.4);
+                            border: 1px solid rgba(139, 92, 246, 0.3);
+                            padding: 14px 28px;
+                            border-radius: 16px;
+                            backdrop-filter: blur(12px);
+                            -webkit-backdrop-filter: blur(12px);
+                            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+                            max-width: fit-content;
+                            margin: 0;
+                        ">
+                            Единый интерфейс в Telegram для управления 10+ ИИ-агентами, которые работают на ваш бизнес
+                            без выходных. Система реализует 9 этапов автоматизации, превращая хаос в прибыль с помощью
+                            технологий, превосходящих человеческий фактор.
+                        </p>
+                    </div>
+
+                    <!-- Feature rows -->
+                    <div class="feature-rows-wrapper"
+                        style="display:flex; flex-direction:column; gap:8px; max-width:500px; margin:0 auto 32px; text-align:left; width: 100%;">
+                        <!-- Feature 1 -->
+                        <div class="feature-row">
+                            <div class="feature-icon">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-weight:700; font-size:0.95rem; margin-bottom:2px;">0% человеческого
+                                    фактора.</div>
+                                <div style="color:rgba(255,255,255,0.45); font-size:0.8rem;">Система не устает, не
+                                    ошибается и не забывает про отчеты. Ваши продажи под контролем нейросетей 24/7.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="feature-row">
+                            <div class="feature-icon">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-weight:700; font-size:0.95rem; margin-bottom:2px;">10 AI-ассистентов.
+                                </div>
+                                <div style="color:rgba(255,255,255,0.45); font-size:0.8rem;">Маркетинг, аналитика и
+                                    контент — 24/7.</div>
+                            </div>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="feature-row">
+                            <div class="feature-icon">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-weight:700; font-size:0.95rem; margin-bottom:2px;">Производительная
+                                    аналитика.</div>
+                                <div style="color:rgba(255,255,255,0.45); font-size:0.8rem;">Реальные данные для роста
+                                    конверсии на 60%.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/AWMOS_bot" target="_blank" class="btn-ghost">Вступить в Waitlist</a>
+
+                    <!-- Footer links in hero -->
+                    <div class="footer-links-hero"
+                        style="margin-top:24px; display:flex; gap:32px; align-items:center; justify-content:center; color:rgba(255,255,255,0.4); font-size:0.8rem;">
+                        <a href="#trust"
+                            style="color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;"
+                            onmouseover="this.style.color='#fff'"
+                            onmouseout="this.style.color='rgba(255,255,255,0.4)'">Преимущества</a>
+                        <a href="#process"
+                            style="color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;"
+                            onmouseover="this.style.color='#fff'"
+                            onmouseout="this.style.color='rgba(255,255,255,0.4)'">Возможности</a>
+                        <a href="#reviews"
+                            style="color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;"
+                            onmouseover="this.style.color='#fff'"
+                            onmouseout="this.style.color='rgba(255,255,255,0.4)'">Отзывы</a>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-              <input id="leadNiche" type="text" placeholder="Ниша вашего бизнеса (для Соффи)" required>
+        </section>
+
+        <!-- Stats -->
+        <section style="position:relative; z-index:2; padding:80px 24px 80px;">
+            <div id="stats-container">
+                <div class="glass-card" style="padding:24px; text-align:center;">
+                    <div style="font-size:2.2rem; font-weight:900;">300+</div>
+                    <div
+                        style="color:rgba(255,255,255,0.4); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; margin-top:4px;">
+                        клиентов</div>
+                </div>
+                <div class="glass-card" style="padding:24px; text-align:center;">
+                    <div style="font-size:2.2rem; font-weight:900;">4+</div>
+                    <div
+                        style="color:rgba(255,255,255,0.4); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; margin-top:4px;">
+                        года опыта</div>
+                </div>
+                <div class="glass-card" style="padding:24px; text-align:center;">
+                    <div style="font-size:2.2rem; font-weight:900; color:#8b5cf6;">60%</div>
+                    <div
+                        style="color:rgba(255,255,255,0.4); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; margin-top:4px;">
+                        рост конверсии</div>
+                </div>
             </div>
-            <div class="form-group">
-              <input id="leadContact" type="text" placeholder="Telegram @username или телефон" required>
+        </section>
+
+        <!-- ═══ TRUST ═══ -->
+        <section id="trust" style="padding:80px 24px;">
+            <div style="max-width:900px; margin:0 auto;">
+                <span class="section-label" style="text-align:center; display:block;">Почему выбирают нас</span>
+                <h2
+                    style="font-size:clamp(2rem,5vw,3.5rem); font-weight:900; text-align:center; margin-bottom:48px; letter-spacing:-0.02em;">
+                    Три причины <span style="color:#8b5cf6;">доверять</span>
+                </h2>
+                <div class="trust-grid"
+                    style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;">
+                    <div class="glass-card" style="padding:32px;">
+                        <div class="trust-card-header">
+                            <div class="trust-icon-wrap"
+                                style="width:44px;height:44px;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:10px;">72 часа до первых
+                                результатов
+                            </h3>
+                        </div>
+                        <p style="color:rgba(255,255,255,0.45);font-size:0.85rem;line-height:1.6;">Запускаем
+                            AI-аналитику в
+                            20 раз быстрее, чем традиционные агентства.</p>
+                    </div>
+                    <div class="glass-card" style="padding:32px;">
+                        <div class="trust-card-header">
+                            <div class="trust-icon-wrap"
+                                style="width:44px;height:44px;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:10px;">0 скрытых платежей</h3>
+                        </div>
+                        <p style="color:rgba(255,255,255,0.45);font-size:0.85rem;line-height:1.6;">В договоре
+                            фиксируется
+                            конечная стоимость без ежегодных обязательств.</p>
+                    </div>
+                    <div class="glass-card" style="padding:32px;">
+                        <div class="trust-card-header">
+                            <div class="trust-icon-wrap"
+                                style="width:44px;height:44px;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                                </svg>
+                            </div>
+                            <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:10px;">45+ кейсов в СНГ и Европе
+                            </h3>
+                        </div>
+                        <p style="color:rgba(255,255,255,0.45);font-size:0.85rem;line-height:1.6;">Подтвержденный опыт
+                            масштабирования бизнеса в вашем регионе.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ HOW IT WORKS ═══ -->
+        <style>
+            #process {
+                padding: 60px 24px 80px;
+                overflow: hidden;
+            }
+
+            @media (min-width: 1024px) {
+                #process {
+                    padding: 80px 40px 100px;
+                }
+            }
+
+            .hw-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .steps-container {
+                display: flex;
+                flex-direction: row;
+                gap: 16px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 24px;
+                -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
+                scrollbar-width: none;
+                /* Hide scrollbar in Firefox */
+            }
+
+            @media (min-width: 768px) {
+                .steps-container {
+                    gap: 20px;
+                    padding-bottom: 40px;
+                }
+            }
+
+            .steps-container::-webkit-scrollbar {
+                display: none;
+                /* Hide scrollbar in Chrome/Safari */
+            }
+
+
+
+            .step-card {
+                background: linear-gradient(145deg, #000000, #111133);
+                border: 1px solid rgba(160, 32, 240, 0.2);
+                border-radius: 24px;
+                padding: 24px;
+                flex: 0 0 calc(92% - 16px);
+                max-width: calc(92% - 16px);
+                scroll-snap-align: center;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+                will-change: transform;
+                box-shadow: 0 4px 15px rgba(160, 32, 240, 0.3);
+                animation: fadeInLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                opacity: 0;
+            }
+
+            @media (min-width: 768px) {
+                .step-card {
+                    padding: 32px;
+                    flex: 0 0 calc(50% - 10px);
+                    max-width: calc(50% - 10px);
+                    scroll-snap-align: start;
+                    gap: 16px;
+                }
+            }
+
+            @media (min-width: 1024px) {
+                .step-card {
+                    flex: 0 0 calc(33.333% - 14px);
+                    max-width: calc(33.333% - 14px);
+                }
+            }
+
+            .step-card:hover {
+                transform: scale(1.02) translateY(-4px);
+                box-shadow: 0 8px 25px rgba(160, 32, 240, 0.6);
+                border-color: rgba(160, 32, 240, 0.5);
+                z-index: 2;
+            }
+
+            .step-card:hover .step-icon {
+                animation: pulse 1s infinite alternate;
+                color: #fff;
+                text-shadow: 0 0 15px rgba(160, 32, 240, 0.9);
+            }
+
+            .step-icon {
+                font-size: 2.2rem;
+                font-weight: 900;
+                color: #a020f0;
+                transition: all 0.3s ease;
+                margin-bottom: 4px;
+            }
+
+            @media (min-width: 768px) {
+                .step-icon {
+                    font-size: 3rem;
+                    margin-bottom: 8px;
+                }
+            }
+
+            .step-title {
+                font-size: 1.1rem;
+                font-weight: 800;
+                color: #fff;
+                margin-bottom: 8px;
+                line-height: 1.4;
+            }
+
+            .step-desc {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .glow-title {
+                text-shadow: 0 0 5px rgba(160, 32, 240, 0.4);
+                animation: titleGlow 3s infinite alternate;
+            }
+
+            @keyframes fadeInLeft {
+                0% {
+                    opacity: 0;
+                    transform: translateX(-50px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                }
+
+                100% {
+                    transform: scale(1.1);
+                }
+            }
+
+            @keyframes titleGlow {
+                0% {
+                    text-shadow: 0 0 5px rgba(160, 32, 240, 0.4);
+                }
+
+                100% {
+                    text-shadow: 0 0 15px rgba(160, 32, 240, 0.7);
+                }
+            }
+
+            /* Sequential animation delays for entrance */
+            .step-card:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+
+            .step-card:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .step-card:nth-child(3) {
+                animation-delay: 0.3s;
+            }
+
+            .step-card:nth-child(4) {
+                animation-delay: 0.4s;
+            }
+
+            .step-card:nth-child(5) {
+                animation-delay: 0.5s;
+            }
+
+            .step-card:nth-child(6) {
+                animation-delay: 0.6s;
+            }
+
+            .step-card:nth-child(7) {
+                animation-delay: 0.7s;
+            }
+
+            .step-card:nth-child(8) {
+                animation-delay: 0.8s;
+            }
+
+            .step-card:nth-child(9) {
+                animation-delay: 0.9s;
+            }
+        </style>
+
+        <section id="process">
+            <div class="hw-container">
+                <span class="section-label"
+                    style="text-align:center; display:block; margin-bottom:16px; color:#8b5cf6; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; font-size:0.85rem;">Как
+                    мы работаем</span>
+                <h2 class="glow-title"
+                    style="font-size:clamp(2rem,5vw,3.5rem); font-weight:900; text-align:center; margin-bottom:12px; letter-spacing:-0.02em;">
+                    Принцип работы <span style="color:#a020f0;">AWM OS</span>
+                </h2>
+                <div style="text-align: center; margin-bottom: 48px;">
+                    <span
+                        style="display:inline-block; padding: 12px 28px; background: linear-gradient(90deg, rgba(139,92,246,0.1), rgba(160,32,240,0.1)); border: 1px solid rgba(139,92,246,0.3); border-radius: 30px; color: #fff; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(139,92,246,0.2), inset 0 0 10px rgba(160,32,240,0.05); backdrop-filter: blur(12px);">
+                        9 этапов максимальной прозрачности и контроля над процессом
+                    </span>
+                </div>
+                <div class="steps-container">
+                    <!-- Step 1 -->
+                    <div class="step-card">
+                        <div class="step-icon">01</div>
+                        <div>
+                            <h3 class="step-title">Личный AI-ассистент 24/7</h3>
+                            <p class="step-desc">Всегда на связи для автоматизации маркетинга.</p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step-card">
+                        <div class="step-icon">02</div>
+                        <div>
+                            <h3 class="step-title">Анализ вашего сайта и соцсетей</h3>
+                            <p class="step-desc">Сканирует контент, аудиторию и метрики.</p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step-card">
+                        <div class="step-icon">03</div>
+                        <div>
+                            <h3 class="step-title">Анализ ваших конкурентов</h3>
+                            <p class="step-desc">Изучает стратегии и слабые места соперников.</p>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="step-card">
+                        <div class="step-icon">04</div>
+                        <div>
+                            <h3 class="step-title">Создание топ-креатива</h3>
+                            <p class="step-desc">С помощью всей собранной информации генерирует высококачественный
+                                контент и идеи.</p>
+                        </div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="step-card">
+                        <div class="step-icon">05</div>
+                        <div>
+                            <h3 class="step-title">SMM ведет ваши соцсети</h3>
+                            <p class="step-desc">Анализирует их, предлагает стратегии с помощью алгоритмов,
+                                публикует
+                                посты.</p>
+                        </div>
+                    </div>
+                    <!-- Step 6 -->
+                    <div class="step-card">
+                        <div class="step-icon">06</div>
+                        <div>
+                            <h3 class="step-title">Запуск рекламы и контроль трафика</h3>
+                            <p class="step-desc">Настраивает кампании, мониторит 24/7 для постоянной оптимизации.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 7 -->
+                    <div class="step-card">
+                        <div class="step-icon">07</div>
+                        <div>
+                            <h3 class="step-title">Результат превосходит человеческий</h3>
+                            <p class="step-desc">С помощью глубокого анализа и контроля трафика 24/7 автоматизация
+                                дает
+                                превосходные показатели.</p>
+                        </div>
+                    </div>
+                    <!-- Step 8 -->
+                    <div class="step-card">
+                        <div class="step-icon">08</div>
+                        <div>
+                            <h3 class="step-title">Отчеты в Telegram 24/7</h3>
+                            <p class="step-desc">Все отчеты приходят вам в Telegram в любое удобное для вас время:
+                                детальные insights по запросу.</p>
+                        </div>
+                    </div>
+                    <!-- Step 9 -->
+                    <div class="step-card">
+                        <div class="step-icon">09</div>
+                        <div>
+                            <h3 class="step-title">Задачи и промоакции</h3>
+                            <p class="step-desc">Вы даете команду (промо или задачи): ассистент создает контент в
+                                стиле
+                                ваших соцсетей с логотипом, отправляет утренние уведомления, обновляет ленту,
+                                запускает
+                                рекламу и сам возвращает готовый ответ.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <!-- ═══ AI SITES & MINI-APPS ═══ -->
+        <style>
+            #ai-sites {
+                padding: 100px 24px 80px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .ai-features-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 64px;
+            }
+
+            @media (min-width: 768px) {
+                .ai-features-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            .ai-card {
+                background: linear-gradient(145deg, rgba(20, 20, 35, 0.7), rgba(10, 10, 20, 0.9));
+                border: 1px solid rgba(160, 32, 240, 0.2);
+                border-radius: 20px;
+                padding: 32px;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                z-index: 1;
+            }
+
+            .ai-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 35px rgba(160, 32, 240, 0.25), inset 0 0 20px rgba(160, 32, 240, 0.1);
+                border-color: rgba(160, 32, 240, 0.5);
+                z-index: 2;
+            }
+
+            .ai-icon-wrap {
+                width: 56px;
+                height: 56px;
+                border-radius: 14px;
+                background: rgba(160, 32, 240, 0.15);
+                border: 1px solid rgba(160, 32, 240, 0.3);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #a020f0;
+                margin-bottom: 24px;
+                box-shadow: 0 0 20px rgba(160, 32, 240, 0.2);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                flex-shrink: 0;
+            }
+
+            .ai-card:hover .ai-icon-wrap {
+                transform: scale(1.1) rotate(5deg);
+                box-shadow: 0 0 30px rgba(160, 32, 240, 0.5);
+                color: #fff;
+                background: #a020f0;
+            }
+
+            .ai-card-title {
+                font-size: 1.25rem;
+                font-weight: 800;
+                color: #fff;
+                margin-bottom: 12px;
+                letter-spacing: 0.02em;
+            }
+
+            .ai-card-desc {
+                color: rgba(255, 255, 255, 0.6);
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            /* Removed card-5-layout to keep it standard 1-column */
+
+            .ai-cta-box {
+                text-align: center;
+                margin-top: 40px;
+                padding: 48px 24px;
+                border-radius: 30px;
+                background: linear-gradient(135deg, rgba(160, 32, 240, 0.1), rgba(0, 0, 0, 0.5));
+                border: 1px solid rgba(160, 32, 240, 0.3);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(160, 32, 240, 0.1);
+            }
+        </style>
+        <section id="ai-sites">
+            <div
+                style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:100\%; max-width:1000px; height:400px; background:radial-gradient(ellipse at top, rgba(160,32,240,0.15), transparent 70%); pointer-events:none;">
             </div>
 
-            <button id="leadSubmit" type="submit" class="btn btn-main btn-block">
-              СООБЩИТЬ МНЕ О ЗАПУСКЕ
-            </button>
+            <div style="max-width:1200px; margin:0 auto; position:relative; z-index:2;">
+                <h2 class="glow-title"
+                    style="font-size:clamp(2rem,5vw,3.5rem); font-weight:900; text-align:center; margin-bottom:64px; letter-spacing:-0.02em;">
+                    <span
+                        style="background:linear-gradient(90deg, #fff, #a020f0); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">AI
+                        для создания сайтов</span><br />и Telegram мини-апп
+                </h2>
 
-            <div id="leadStatus" style="margin-top:10px; text-align:center; opacity:0.85;"></div>
+                <div class="ai-features-grid">
+                    <!-- Card 1: Target (ЦА) -->
+                    <div class="ai-card"
+                        style="animation: fadeInLeft 0.5s ease forwards; opacity:0; animation-delay:0.1s;">
+                        <span
+                            style="font-size:3.5rem; opacity:0.03; position:absolute; top:12px; right:16px; font-weight:900; pointer-events:none;">01</span>
+                        <div class="ai-icon-wrap">
+                            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="ai-card-title">Выявление целевой аудитории (ЦА)</h3>
+                        <p class="ai-card-desc">AI анализирует данные для точного определения идеальных клиентов.</p>
+                    </div>
 
-            <a id="leadDeeplink" href="#" target="_blank"
-              style="display:none; margin-top:12px; text-align:center; font-weight:700;">
-              Открыть бота в Telegram
-            </a>
-          </div>
-        </form>
-      </section>
+                    <!-- Card 2: Search (Анализ конкурентов) -->
+                    <div class="ai-card"
+                        style="animation: fadeInLeft 0.5s ease forwards; opacity:0; animation-delay:0.2s;">
+                        <span
+                            style="font-size:3.5rem; opacity:0.03; position:absolute; top:12px; right:16px; font-weight:900; pointer-events:none;">02</span>
+                        <div class="ai-icon-wrap">
+                            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="ai-card-title">Анализ конкурентов</h3>
+                        <p class="ai-card-desc">Изучает сайты и стратегии соперников, выявляет сильные и слабые стороны.
+                        </p>
+                    </div>
+
+                    <!-- Card 3: Bulb (Идеальные тексты) -->
+                    <div class="ai-card"
+                        style="animation: fadeInLeft 0.5s ease forwards; opacity:0; animation-delay:0.3s;">
+                        <span
+                            style="font-size:3.5rem; opacity:0.03; position:absolute; top:12px; right:16px; font-weight:900; pointer-events:none;">03</span>
+                        <div class="ai-icon-wrap">
+                            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                        </div>
+                        <h3 class="ai-card-title">Выявление идеальных заголовков и текстов</h3>
+                        <p class="ai-card-desc">Генерирует привлекательный контент на основе данных и лучших практик.
+                        </p>
+                    </div>
+
+                    <!-- Card 4: Brush (Оформление) -->
+                    <div class="ai-card"
+                        style="animation: fadeInLeft 0.5s ease forwards; opacity:0; animation-delay:0.4s;">
+                        <span
+                            style="font-size:3.5rem; opacity:0.03; position:absolute; top:12px; right:16px; font-weight:900; pointer-events:none;">04</span>
+                        <div class="ai-icon-wrap">
+                            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                            </svg>
+                        </div>
+                        <h3 class="ai-card-title">Оформление</h3>
+                        <p class="ai-card-desc">Автоматически предлагает дизайн, цвета и структуру для максимальной
+                            конверсии.</p>
+                    </div>
+
+                    <!-- Card 5: Telegram (Мини-апп) -->
+                    <div class="ai-card"
+                        style="animation: fadeInLeft 0.5s ease forwards; opacity:0; animation-delay:0.5s;">
+                        <span
+                            style="font-size:3.5rem; opacity:0.03; position:absolute; top:12px; right:16px; font-weight:900; pointer-events:none;">05</span>
+                        <div class="ai-icon-wrap">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M11.944 0a12 12 0 0 0-12 12 12 12 0 0 0 12 12 12 12 0 0 0 12-12 12 12 0 0 0-12-12zm6.188 8.046l-2.071 9.773c-.156.69-.559.858-1.134.536l-3.134-2.31-1.513 1.457c-.167.167-.308.308-.631.308l.225-3.195 5.816-5.253c.253-.225-.055-.35-.392-.124l-7.189 4.524-3.097-.968c-.673-.21-.687-.674.14-.998l12.112-4.673c.563-.209 1.056.126.868.923z" />
+                            </svg>
+                        </div>
+                        <h3 class="ai-card-title">Создание Telegram мини-апп</h3>
+                        <p class="ai-card-desc">Разрабатывает интегрированные приложения для взаимодействия с аудиторией
+                            в TG.</p>
+                    </div>
+
+                    <!-- Card 6: Visual GIF -->
+                    <div
+                        style="animation: fadeInLeft 0.5s ease forwards; opacity:0; animation-delay:0.6s; display:flex; align-items:center; justify-content:center; padding: 16px;">
+                        <img src="public/video-output-4D8F0C5F-6679-4A69-87F4-9F428F2AD7A8-2.gif"
+                            alt="Telegram App Demo"
+                            style="max-width:100%; height:auto; border-radius:24px; box-shadow:0 15px 40px rgba(160,32,240,0.25); border:1px solid rgba(160,32,240,0.3); transform: perspective(1000px) rotateY(-5deg); transition: transform 0.5s ease;"
+                            onmouseover="this.style.transform='perspective(1000px) rotateY(0deg) scale(1.05)'"
+                            onmouseout="this.style.transform='perspective(1000px) rotateY(-5deg) scale(1)'">
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- ═══ TEAM ═══ -->
+        <section id="team" style="padding:80px 24px;">
+            <div style="max-width:900px; margin:0 auto;">
+                <span class="section-label" style="text-align:center; display:block;">Команда</span>
+                <h2
+                    style="font-size:clamp(2rem,5vw,3.5rem); font-weight:900; text-align:center; margin-bottom:48px; letter-spacing:-0.02em;">
+                    Команда <span style="color:#8b5cf6;">ROI</span>
+                </h2>
+                <div class="team-grid"
+                    style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;">
+                    <div class="glass-card" style="padding:32px; display:flex; flex-direction:column; height:100%;">
+                        <div
+                            style="width:52px;height:52px;border-radius:50%;background:rgba(139,92,246,0.15);border:2px solid rgba(139,92,246,0.4);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;color:#8b5cf6;margin-bottom:20px;">
+                            А</div>
+                        <h3 style="font-size:1.1rem;font-weight:900;margin-bottom:4px;">Алексей</h3>
+                        <p
+                            style="color:#8b5cf6;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">
+                            Ведущий стратег</p>
+                        <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;line-height:1.6;flex:1;">
+                            Эксперт по внедрению AI-аналитики для оптимизации маркетинговых воронок.</p>
+                        <div style="border-top:1px solid rgba(255,255,255,0.08);margin-top:20px;padding-top:16px;">
+                            <p style="font-size:0.8rem;font-weight:700;line-height:1.5;">Спроектировал 50+ нейросетевых
+                                стратегий для Enterprise-сектора.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card" style="padding:32px; display:flex; flex-direction:column; height:100%;">
+                        <div
+                            style="width:52px;height:52px;border-radius:50%;background:rgba(139,92,246,0.15);border:2px solid rgba(139,92,246,0.4);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;color:#8b5cf6;margin-bottom:20px;">
+                            М</div>
+                        <h3 style="font-size:1.1rem;font-weight:900;margin-bottom:4px;">Мария</h3>
+                        <p
+                            style="color:#8b5cf6;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">
+                            AI-инженер</p>
+                        <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;line-height:1.6;flex:1;">Разработчик
+                            нейронных помощников для автоматизации клиентского пути.</p>
+                        <div style="border-top:1px solid rgba(255,255,255,0.08);margin-top:20px;padding-top:16px;">
+                            <p style="font-size:0.8rem;font-weight:700;line-height:1.5;">Автоматизировал 90% рутинных
+                                задач в 30+ проектах.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card" style="padding:32px; display:flex; flex-direction:column; height:100%;">
+                        <div
+                            style="width:52px;height:52px;border-radius:50%;background:rgba(139,92,246,0.15);border:2px solid rgba(139,92,246,0.4);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;color:#8b5cf6;margin-bottom:20px;">
+                            Д</div>
+                        <h3 style="font-size:1.1rem;font-weight:900;margin-bottom:4px;">Дмитрий</h3>
+                        <p
+                            style="color:#8b5cf6;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">
+                            Аналитик окупаемости</p>
+                        <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;line-height:1.6;flex:1;">Специалист по
+                            Data-driven аналитике и глубокому обучению нейросетей.</p>
+                        <div style="border-top:1px solid rgba(255,255,255,0.08);margin-top:20px;padding-top:16px;">
+                            <p style="font-size:0.8rem;font-weight:700;line-height:1.5;">Увеличил точность прогнозов
+                                окупаемости на 45%.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ REVIEWS ═══ -->
+        <section id="reviews" style="padding:80px 24px;">
+            <div style="max-width:1000px; margin:0 auto;">
+                <span class="section-label" style="text-align:center; display:block;">Отзывы</span>
+                <h2
+                    style="font-size:clamp(2rem,5vw,3.5rem); font-weight:900; text-align:center; margin-bottom:16px; letter-spacing:-0.02em;">
+                    Реальные результаты</h2>
+                <div style="text-align: center; margin-bottom: 48px;">
+                    <span
+                        style="display:inline-block; padding: 10px 24px; background: linear-gradient(90deg, rgba(139,92,246,0.1), rgba(160,32,240,0.1)); border: 1px solid rgba(139,92,246,0.3); border-radius: 30px; color: #fff; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(139,92,246,0.2), inset 0 0 10px rgba(160,32,240,0.05); backdrop-filter: blur(12px);">
+                        Только реальные цифры прибыли и ROI.
+                    </span>
+                </div>
+                <div class="reviews-grid"
+                    style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+                    <div class="glass-card" style="padding:32px; display:flex; flex-direction:column; height:100%;">
+                        <div
+                            style="color:#8b5cf6; font-size:3rem; line-height:1; font-family:serif; margin-bottom:12px; opacity:0.5;">
+                            "</div>
+                        <p
+                            style="font-size:0.9rem;font-weight:400;line-height:1.7;color:rgba(255,255,255,0.85);margin-bottom:24px;flex:1;">
+                            Сайт окупился за первый месяц, конкуренты теперь далеко позади. Сначала показали аудит,
+                            потом
+                            начали работу.</p>
+                        <div
+                            style="display:flex;align-items:center;gap:14px;border-top:1px solid rgba(255,255,255,0.07);padding-top:20px;">
+                            <div
+                                style="width:40px;height:40px;border-radius:50%;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:0.9rem;color:#8b5cf6;">
+                                С</div>
+                            <div>
+                                <div style="font-weight:700;font-size:0.9rem;color:#fff;">Сергей</div>
+                                <div
+                                    style="color:rgba(255,255,255,0.4);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px;">
+                                    Владелец производства</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card" style="padding:32px; display:flex; flex-direction:column; height:100%;">
+                        <div
+                            style="color:#8b5cf6; font-size:3rem; line-height:1; font-family:serif; margin-bottom:12px; opacity:0.5;">
+                            "</div>
+                        <p
+                            style="font-size:0.9rem;font-weight:400;line-height:1.7;color:rgba(255,255,255,0.85);margin-bottom:24px;flex:1;">
+                            Команда внедрила AI под мой запрос за 2 недели. Теперь я понимаю, откуда приходят продажи.
+                        </p>
+                        <div
+                            style="display:flex;align-items:center;gap:14px;border-top:1px solid rgba(255,255,255,0.07);padding-top:20px;">
+                            <div
+                                style="width:40px;height:40px;border-radius:50%;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:0.9rem;color:#8b5cf6;">
+                                А</div>
+                            <div>
+                                <div style="font-weight:700;font-size:0.9rem;color:#fff;">Анна</div>
+                                <div
+                                    style="color:rgba(255,255,255,0.4);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px;">
+                                    Экспорт товаров</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card" style="padding:32px; display:flex; flex-direction:column; height:100%;">
+                        <div
+                            style="color:#8b5cf6; font-size:3rem; line-height:1; font-family:serif; margin-bottom:12px; opacity:0.5;">
+                            "</div>
+                        <p
+                            style="font-size:0.9rem;font-weight:400;line-height:1.7;color:rgba(255,255,255,0.85);margin-bottom:24px;flex:1;">
+                            Самое ценное — коммуникация. Отвечают быстро, на пальцах объясняют всю «техничку».</p>
+                        <div
+                            style="display:flex;align-items:center;gap:14px;border-top:1px solid rgba(255,255,255,0.07);padding-top:20px;">
+                            <div
+                                style="width:40px;height:40px;border-radius:50%;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:0.9rem;color:#8b5cf6;">
+                                И</div>
+                            <div>
+                                <div style="font-weight:700;font-size:0.9rem;color:#fff;">Игорь</div>
+                                <div
+                                    style="color:rgba(255,255,255,0.4);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px;">
+                                    IT-сервис</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-menu-section"
+            style="position:relative; z-index:2; padding:80px 24px 0; text-align:center;">
+            <div style="max-width:1000px; margin:0 auto;" x-data>
+                <div class="service-menu-title">💎 МЕНЮ УСЛУГ SOFFI</div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>AI-Маркетинг «Автопилот»</h3>
+                        <p>Подписка. Полный цикл продвижения 24/7: анализ, SMM, реклама, графики и отчеты.</p>
+                        <button @click="$dispatch('open-waitlist')" class="btn-service" style="cursor:pointer;">ВЫБРАТЬ
+                            ПОДПИСКУ</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Разработка Экосистемы</h3>
+                        <p>Услуга. Создание сайтов с полным AI-анализом и Mini Apps, синхронизированных в единый
+                            организм.</p>
+                        <button @click="$dispatch('open-waitlist')" class="btn-service" style="cursor:pointer;">ЗАКАЗАТЬ
+                            РАЗРАБОТКУ</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Глубокий AI-Аудит</h3>
+                        <p>Услуга. Разовый детальный анализ рынка и ЦА для поиска точек роста силами 10+ ИИ-агентов.</p>
+                        <button @click="$dispatch('open-waitlist')" class="btn-service" style="cursor:pointer;">ПОЛУЧИТЬ
+                            АУДИТ</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Content & Ads Turbo</h3>
+                        <p>Услуга. Мгновенная генерация креативов и запуск промо в уникальном стиле вашего бренда.</p>
+                        <button @click="$dispatch('open-waitlist')" class="btn-service"
+                            style="cursor:pointer;">АКТИВИРОВАТЬ TURBO</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="audit" style="position:relative; padding:120px 24px; overflow:hidden; text-align:center;">
+            <div
+                style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 50% 50%, rgba(139,92,246,0.15) 0%, transparent 70%);">
+            </div>
+
+            <div id="audit-video-deco" class="video-container">
+                <video src="grok-video-53194d8a-8236-401e-a9f0-31c891608610.mp4" autoplay loop muted playsinline
+                    class="video-element"></video>
+            </div>
+            <style>
+                @media (max-width: 475px) {
+                    #audit-bg-gif {
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+
+                @media (min-width: 1024px) {
+                    #audit-bg-gif img {
+                        height: auto !important;
+                        max-height: 80% !important;
+                        object-fit: contain;
+                    }
+                }
+            </style>
+            <div id="audit-bg-gif" class="gif-container"
+                style="position:absolute;inset:0;pointer-events:none;z-index:0;mix-blend-mode:screen;opacity:0.22;display:flex;align-items:center;">
+                <img src="public/tggif.gif" alt="" class="gif-element" loading="lazy">
+            </div>
+
+            <div style="position:relative; z-index:2; max-width:1000px; margin:0 auto; padding: 48px 0;">
+
+                <!-- Branding SECOND -->
+                <div style="max-width:800px; margin:80px auto 0; padding: 0 32px; text-align:center;">
+                    <div
+                        style="display:inline-block; margin-bottom:16px; padding:8px 20px; border-radius:30px; background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); color:#a78bfa; font-size:0.9rem; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; box-shadow: 0 0 16px rgba(139,92,246,0.2);">
+                        Будущее уже здесь</div>
+
+                    <h2
+                        style="font-size:clamp(3.5rem, 8vw, 6rem); font-weight:900; letter-spacing:-0.04em; margin-bottom:4px; background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent;">
+                        AWM OS
+                    </h2>
+
+                    <p
+                        style="color:rgba(255,255,255,0.7); font-size:1.2rem; font-weight:700; margin-bottom:32px; letter-spacing:0.15em; text-transform:uppercase;">
+                        AI Web Marketing <span style="color:#8b5cf6;">Operating System</span>
+                    </p>
+
+                    <div
+                        style="width: 80px; height: 4px; background: linear-gradient(90deg, #8b5cf6, transparent); margin: 0 auto 32px; border-radius: 2px;">
+                    </div>
+
+                    <p
+                        style="color:rgba(255,255,255,0.9); margin-bottom:48px; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.7; font-size:1.2rem; font-weight: 500;">
+                        Хватит кормить конкурентов. <br />
+                        Запустите <span
+                            style="font-weight:800; color:#fff; text-shadow: 0 0 12px rgba(255,255,255,0.3);">AI-маркетинг</span>.<br /><br />
+                        <span
+                            style="display:inline-block; margin-top: 24px; padding: 12px 28px; background: linear-gradient(90deg, rgba(139,92,246,0.15), rgba(160,32,240,0.15)); border: 1px solid rgba(139,92,246,0.4); border-radius: 30px; color: #fff; font-size: 0.95rem; text-align: center; font-weight: 600; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(139,92,246,0.3), inset 0 0 10px rgba(160,32,240,0.1); backdrop-filter: blur(12px); line-height: 1.4;">
+                            Мы покажем точки роста вашего бизнеса и рассчитаем потенциальную прибыль от внедрения AI.
+                        </span>
+                    </p>
+
+                    <button @click="$dispatch('open-waitlist')" class="btn-primary"
+                        style="font-size:1.1rem; padding:18px 48px; box-shadow: 0 8px 32px rgba(139,92,246,0.3); border:none; cursor:pointer;">
+                        Уведомить о запуске →
+                    </button>
+                </div>
+            </div>
+
+            </div>
+        </section>
+
+        <!-- ═══ FAQ ═══ -->
+        <section id="faq" style="padding:80px 24px; position:relative; z-index:2;">
+            <div style="max-width:800px; margin:0 auto;">
+                <span class="section-label" style="text-align:center; display:block;">FAQ</span>
+                <h2 style="font-size:clamp(2rem,5vw,3rem); font-weight:900; text-align:center; margin-bottom:48px;">
+                    Вопросы и <span style="color:#8b5cf6;">ответы</span>
+                </h2>
+                <div x-data="{ active: null }" class="space-y-4">
+                    <div class="faq-item" :class="{ 'active': active === 0 }">
+                        <button class="faq-button" @click="active = active === 0 ? null : 0">
+                            <span style="font-weight:700;">Насколько безопасны мои данные при использовании AI?</span>
+                            <svg class="faq-icon w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </button>
+                        <div class="faq-content">
+                            Мы используем изолированные инстансы нейросетей и корпоративные API, которые гарантируют,
+                            что ваши данные не используются для обучения публичных моделей. Ваша безопасность — наш
+                            главный приоритет.
+                        </div>
+                    </div>
+                    <div class="faq-item" :class="{ 'active': active === 1 }">
+                        <button class="faq-button" @click="active = active === 1 ? null : 1">
+                            <span style="font-weight:700;">Когда состоится официальный запуск системы?</span>
+                            <svg class="faq-icon w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </button>
+                        <div class="faq-content">
+                            Официальный релиз запланирован на ближайшие месяцы. Участники Waitlist получат ранний доступ
+                            к бета-тестированию и эксклюзивные условия подписки.
+                        </div>
+                    </div>
+                    <div class="faq-item" :class="{ 'active': active === 2 }">
+                        <button class="faq-button" @click="active = active === 2 ? null : 2">
+                            <span style="font-weight:700;">Как работает лист ожидания?</span>
+                            <svg class="faq-icon w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </button>
+                        <div class="faq-content">
+                            После регистрации в Waitlist через наш Telegram-бот вы попадаете в очередь. Мы будем
+                            уведомлять вас о прогрессе и предоставим доступ к системе порциями, чтобы гарантировать
+                            качество работы AI-ассистентов.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ FOOTER ═══ -->
+        <footer style="border-top:1px solid rgba(255,255,255,0.06); padding:40px 24px; background:#04040a;">
+            <div
+                style="max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:32px;">
+                <div style="display:flex; gap:32px; flex-wrap:wrap; justify-content:center;">
+                    <a href="#trust"
+                        style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.9rem;transition:color 0.2s;font-weight:500;"
+                        onmouseover="this.style.color='#8b5cf6'"
+                        onmouseout="this.style.color='rgba(255,255,255,0.6)'">Преимущества</a>
+                    <a href="#process"
+                        style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.9rem;transition:color 0.2s;font-weight:500;"
+                        onmouseover="this.style.color='#8b5cf6'"
+                        onmouseout="this.style.color='rgba(255,255,255,0.6)'">Возможности</a>
+                    <a href="#audit"
+                        style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.9rem;transition:color 0.2s;font-weight:500;"
+                        onmouseover="this.style.color='#8b5cf6'"
+                        onmouseout="this.style.color='rgba(255,255,255,0.6)'">Контакт</a>
+                </div>
+
+                <!-- Социальные Сети -->
+                <div style="display:flex; gap:24px; align-items:center;">
+                    <!-- Telegram -->
+                    <a href="https://t.me/AWMOS_bot" target="_blank"
+                        style="color:rgba(255,255,255,0.4); transition:all 0.3s;"
+                        onmouseover="this.style.color='#8b5cf6'; this.style.transform='scale(1.1)';"
+                        onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.transform='scale(1)';">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" style="width:24px; height:24px;">
+                            <path
+                                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                        </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="#" style="color:rgba(255,255,255,0.4); transition:all 0.3s;"
+                        onmouseover="this.style.color='#8b5cf6'; this.style.transform='scale(1.1)';"
+                        onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.transform='scale(1)';">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" style="width:24px; height:24px;">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <!-- Facebook -->
+                    <a href="#" style="color:rgba(255,255,255,0.4); transition:all 0.3s;"
+                        onmouseover="this.style.color='#8b5cf6'; this.style.transform='scale(1.1)';"
+                        onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.transform='scale(1)';">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" style="width:24px; height:24px;">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div style="width:100%; height:1px; background:rgba(255,255,255,0.05); margin:8px 0;"></div>
+
+                <p style="color:rgba(255,255,255,0.2);font-size:0.75rem; letter-spacing:0.05em;">© 2026 AWM OS. All
+                    rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- GLOBAL MODAL OVERLAY (USER PROVIDED) -->
+    <div id="modalOverlay" class="modal-overlay" style="display: none;">
+        <section class="waitlist-section glass-card">
+            <button id="closeModal" class="close-btn" type="button">×</button>
+
+            <h2>WAITLIST</h2>
+
+            <div class="warning-box">
+                <span>⚠️</span>
+                <p>
+                    Статус: Финальная стадия разработки. Проект находится на стадии развертывания.
+                    На данный момент мы принимаем заявки на включение в список раннего доступа.
+                    Оставьте ваши данные, и мы сообщим вам о запуске системы.
+                </p>
+            </div>
+
+            <form id="waitlistForm">
+                <div class="form-group">
+                    <input id="leadName" type="text" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <input id="leadNiche" type="text" placeholder="Ниша вашего бизнеса (для Соффи)" required>
+                </div>
+                <div class="form-group">
+                    <input id="leadContact" type="text" placeholder="Telegram @username или телефон" required>
+                </div>
+
+                <button id="leadSubmit" type="submit" class="btn btn-main btn-block">
+                    СООБЩИТЬ МНЕ О ЗАПУСКЕ
+                </button>
+
+                <div id="leadStatus" style="margin-top:10px; text-align:center; opacity:0.85;"></div>
+
+                <a id="leadDeeplink" href="#" target="_blank"
+                    style="display:none; margin-top:12px; text-align:center; font-weight:700;">
+                    Открыть бота в Telegram
+                </a>
+            </form>
+        </section>
     </div>
 
-  </main>
+    <script>
+        // ===== WAITLIST MODAL + WEBSITE LEAD SUBMIT =====
+        (() => {
+            const API = "https://ai-bot-a3aj.onrender.com/api/leads/website";
 
-  <!-- ✅ ГОТОВЫЙ СКРИПТ (исправленный) -->
-  <script>
-    (() => {
-      const API = "https://ai-bot-a3aj.onrender.com/api/leads/website";
+            const modalOverlay = document.getElementById("modalOverlay");
+            const closeModalBtn = document.getElementById("closeModal");
+            const serviceBtns = document.querySelectorAll(".service-card .btn-service, .btn-primary");
 
-      const modalOverlay = document.getElementById("modalOverlay");
-      const closeModalBtn = document.getElementById("closeModal");
+            const form = document.getElementById("waitlistForm");
+            const submitBtn = document.getElementById("leadSubmit");
+            const statusEl = document.getElementById("leadStatus");
+            const deeplinkEl = document.getElementById("leadDeeplink");
 
-      const form = document.getElementById("waitlistForm");
-      const submitBtn = document.getElementById("leadSubmit");
-      const statusEl = document.getElementById("leadStatus");
-      const deeplinkEl = document.getElementById("leadDeeplink");
+            const openModal = (e) => {
+                if (e) e.preventDefault();
+                if (!modalOverlay) return;
 
-      const openModal = (e) => {
-        if (e && typeof e.preventDefault === "function") e.preventDefault();
-        if (!modalOverlay) return;
+                modalOverlay.style.display = "flex";
+                setTimeout(() => modalOverlay.classList.add("active"), 10);
+                document.body.style.overflow = "hidden";
+            };
 
-        modalOverlay.style.display = "flex";
-        setTimeout(() => modalOverlay.classList.add("active"), 10);
-        document.body.style.overflow = "hidden";
-      };
+            const closeModal = () => {
+                if (!modalOverlay) return;
 
-      const closeModal = () => {
-        if (!modalOverlay) return;
+                modalOverlay.classList.remove("active");
+                document.body.style.overflow = "";
+                setTimeout(() => { modalOverlay.style.display = "none"; }, 250);
+            };
 
-        modalOverlay.classList.remove("active");
-        document.body.style.overflow = "";
-        setTimeout(() => { modalOverlay.style.display = "none"; }, 250);
-      };
+            // Открытие модалки с кнопок услуг и главной CTA
+            serviceBtns.forEach(btn => btn.addEventListener("click", openModal));
 
-      // ✅ ВАЖНО: открытие модалки ТОЛЬКО через Alpine dispatch('open-waitlist')
-      window.addEventListener("open-waitlist", openModal);
+            // Закрытие по X
+            if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
 
-      // Закрытие по X
-      if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
-
-      // Закрытие по клику на фон
-      if (modalOverlay) {
-        modalOverlay.addEventListener("click", (e) => {
-          if (e.target === modalOverlay) closeModal();
-        });
-      }
-
-      // Отправка формы
-      if (form) {
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-
-          const name = (document.getElementById("leadName")?.value || "").trim();
-          const niche = (document.getElementById("leadNiche")?.value || "").trim();
-          const rawContact = (document.getElementById("leadContact")?.value || "").trim();
-          const normalizedContact = rawContact.replace(/\s+/g, "");
-
-          const originalText = submitBtn ? submitBtn.innerText : "";
-
-          if (statusEl) {
-            statusEl.textContent = "";
-            statusEl.style.color = "";
-          }
-          if (deeplinkEl) deeplinkEl.style.display = "none";
-
-          // ✅ Более мягкая валидация
-          const tgPattern = /^@[A-Za-z0-9_]{4,}$/;
-          const tgLinkPattern = /^https?:\/\/t\.me\/[A-Za-z0-9_]{4,}$/i;
-          const phonePattern = /^[+]?[0-9]{7,20}$/;
-
-          const isTg = tgPattern.test(normalizedContact) || tgLinkPattern.test(normalizedContact);
-          const isPhone = phonePattern.test(normalizedContact);
-
-          if (!isTg && !isPhone) {
-            if (statusEl) {
-              statusEl.textContent = "Введите Telegram (@username или t.me/username) или номер телефона";
-              statusEl.style.color = "#fbbf24";
-            }
-            return;
-          }
-
-          // tg если начинается с @ или это t.me ссылка
-          const payload = {
-            name,
-            niche,
-            tg: normalizedContact.startsWith("@") || tgLinkPattern.test(normalizedContact) ? normalizedContact : "",
-            contact: normalizedContact
-          };
-
-          try {
-            if (submitBtn) {
-              submitBtn.innerText = "ОТПРАВКА...";
-              submitBtn.disabled = true;
-              submitBtn.style.opacity = "0.7";
+            // Закрытие по клику на фон
+            if (modalOverlay) {
+                modalOverlay.addEventListener("click", (e) => {
+                    if (e.target === modalOverlay) closeModal();
+                });
             }
 
-            const res = await fetch(API, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload),
-            });
+            // Отправка формы
+            if (form) {
+                form.addEventListener("submit", async (e) => {
+                    e.preventDefault();
 
-            const data = await res.json();
-            if (!data.ok) throw new Error(data.error || "Ошибка");
+                    const name = document.getElementById("leadName")?.value?.trim() || "";
+                    const niche = document.getElementById("leadNiche")?.value?.trim() || "";
+                    const rawContact = document.getElementById("leadContact")?.value?.trim() || "";
 
-            const waitlistContent = document.getElementById("waitlistContent");
-            if (waitlistContent) {
-              waitlistContent.innerHTML = `
-                <div style="text-align:center; padding: 20px 0;">
-                  <div style="font-size:3rem; margin-bottom:16px;">✅</div>
-                  <h3 style="font-size:1.5rem; font-weight:900; color:#00f2ff; margin-bottom:16px; text-transform:uppercase;">
-                    Заявка принята
-                  </h3>
-                  <p style="color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.6; margin-bottom:32px;">
-                    Чтобы Soff смог прислать уведомление о запуске и показать демо сервиса — нажмите кнопку «Перейти в Telegram» и нажмите Start.
-                  </p>
-                  <a href="${data.deeplink || 'https://t.me/AWMOS_bot'}" target="_blank" class="btn btn-main btn-block"
-                     style="text-decoration:none; display:inline-block; box-sizing:border-box;">
-                    ПЕРЕЙТИ В TELEGRAM
-                  </a>
-                </div>
-              `;
+                    // tg если начинается с @, иначе в contact
+                    const payload = {
+                        name,
+                        niche,
+                        tg: rawContact.startsWith("@") ? rawContact : "",
+                        contact: rawContact
+                    };
+
+                    const originalText = submitBtn ? submitBtn.innerText : "";
+                    if (statusEl) {
+                        statusEl.textContent = "";
+                        statusEl.style.color = ""; // reset error color
+                    }
+                    if (deeplinkEl) deeplinkEl.style.display = "none";
+
+                    // Валидация
+                    const tgPattern = /^@[A-Za-z0-9_]{4,}$/;
+                    const phonePattern = /^[+]?[0-9]{7,20}$/; // Any country phone, 7 to 20 digits
+
+                    if (!tgPattern.test(rawContact) && !phonePattern.test(rawContact)) {
+                        if (statusEl) {
+                            statusEl.textContent = "Введите корректный Telegram или номер телефона";
+                            statusEl.style.color = "#fbbf24"; // warning color
+                        }
+                        return;
+                    }
+
+                    try {
+                        if (submitBtn) {
+                            submitBtn.innerText = "ОТПРАВКА...";
+                            submitBtn.disabled = true;
+                            submitBtn.style.opacity = "0.7";
+                        }
+
+                        const res = await fetch(API, {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(payload),
+                        });
+
+                        const data = await res.json();
+                        if (!data.ok) throw new Error(data.error || "Ошибка");
+
+                        if (submitBtn) {
+                            submitBtn.innerText = "ГОТОВО!";
+                            submitBtn.style.background = "#00ff88";
+                        }
+
+                        if (statusEl) {
+                            statusEl.textContent = "Заявка отправлена. Нажмите ниже, чтобы открыть бота и подтвердить заявку.";
+                        }
+
+                        if (deeplinkEl) {
+                            deeplinkEl.href = data.deeplink;
+                            deeplinkEl.style.display = "block";
+                        }
+
+                    } catch (err) {
+                        console.error(err);
+
+                        if (statusEl) {
+                            statusEl.textContent = "Ошибка отправки. Попробуйте ещё раз.";
+                            statusEl.style.color = "#ef4444";
+                        }
+
+                        if (submitBtn) {
+                            submitBtn.innerText = originalText || "СООБЩИТЬ МНЕ О ЗАПУСКЕ";
+                            submitBtn.disabled = false;
+                            submitBtn.style.opacity = "1";
+                        }
+                    }
+                });
             }
-
-          } catch (err) {
-            console.error(err);
-
-            if (statusEl) {
-              statusEl.textContent = "Ошибка отправки. Попробуйте ещё раз.";
-              statusEl.style.color = "#ef4444";
-            }
-
-            if (submitBtn) {
-              submitBtn.innerText = originalText || "СООБЩИТЬ МНЕ О ЗАПУСКЕ";
-              submitBtn.disabled = false;
-              submitBtn.style.opacity = "1";
-            }
-          }
-        });
-      }
-    })();
-  </script>
-
+        })();
+    </script>
 </body>
 
 </html>
