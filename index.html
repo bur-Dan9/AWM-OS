@@ -761,6 +761,46 @@
             transform: rotate(45deg);
         }
     </style>
+    <style>
+        /* Mobile Spacing Fixes */
+        @media (max-width: 767px) {
+            section:not(#audit) {
+                padding-top: 40px !important;
+                padding-bottom: 40px !important;
+            }
+
+            #process {
+                padding-top: 30px !important;
+                padding-bottom: 40px !important;
+            }
+
+            #ai-sites {
+                padding-top: 40px !important;
+                padding-bottom: 40px !important;
+            }
+
+            #audit {
+                padding-top: 60px !important;
+                padding-bottom: 60px !important;
+            }
+
+            .hero-content-overlay h1 {
+                margin-bottom: 15px !important;
+            }
+
+            .feature-rows-wrapper {
+                margin-bottom: 24px !important;
+            }
+
+            #stats-container {
+                gap: 12px !important;
+            }
+
+            .ai-features-grid {
+                margin-bottom: 32px !important;
+            }
+        }
+    </style>
 </head>
 
 <body x-data="{ scrolled: false, menuOpen: false }" @scroll.window="scrolled = (window.pageYOffset > 20)"
@@ -983,7 +1023,7 @@
         </div>
 
         <!-- ═══ HERO ═══ -->
-        <section
+        <section id="hero"
             style="position:relative; width:100%; display:flex; flex-direction:column; align-items:center; padding-top:80px; text-align:center; overflow:hidden;">
 
             <!-- Mobile: Holographic figure GIF outside container -->
