@@ -41,6 +41,7 @@ const WaitlistModal = ({ isOpen, onClose, service }) => {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             {/* Backdrop */}
             <div
+                id="modalOverlay"
                 className="absolute inset-0 bg-bg/80 backdrop-blur-md"
                 onClick={handleClose}
             ></div>
@@ -48,6 +49,7 @@ const WaitlistModal = ({ isOpen, onClose, service }) => {
             {/* Modal Content */}
             <div className="glass-card w-full max-w-lg rounded-[40px] overflow-hidden relative z-10 animate-in zoom-in-95 duration-300 border-brand-purple/20">
                 <button
+                    id="closeModal"
                     onClick={handleClose}
                     className="absolute top-6 right-6 p-2 text-muted-text hover:text-text hover:bg-white/10 rounded-full transition-colors z-20"
                 >
@@ -68,12 +70,13 @@ const WaitlistModal = ({ isOpen, onClose, service }) => {
                                 Оставьте заявку, чтобы получить ранний доступ и забронировать место в очереди.
                             </p>
 
-                            <form onSubmit={handleSubmit} className="space-y-4">
+                            <form id="waitlistForm" onSubmit={handleSubmit} className="space-y-4">
                                 <div className="space-y-1">
                                     <div className="relative">
                                         <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-text" />
                                         <input
                                             type="text"
+                                            data-lead="name"
                                             placeholder="Ваше имя"
                                             value={formData.name}
                                             onChange={(e) => {
@@ -91,6 +94,7 @@ const WaitlistModal = ({ isOpen, onClose, service }) => {
                                         <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-text" />
                                         <input
                                             type="text"
+                                            data-lead="niche"
                                             placeholder="Ниша вашего бизнеса"
                                             value={formData.niche}
                                             onChange={(e) => {
@@ -108,6 +112,7 @@ const WaitlistModal = ({ isOpen, onClose, service }) => {
                                         <MessageSquare className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-text" />
                                         <input
                                             type="text"
+                                            data-lead="contact"
                                             placeholder="Telegram @username или телефон"
                                             value={formData.contact}
                                             onChange={(e) => {

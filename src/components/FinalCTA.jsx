@@ -25,6 +25,7 @@ const FinalCTA = ({ onJoinWaitlist }) => {
                     <button
                         onClick={onJoinWaitlist}
                         className="bg-gradient-to-r from-brand-purple to-brand-magenta text-white px-12 py-5 rounded-full font-bold text-xl shadow-2xl shadow-brand-purple/40 hover:scale-105 transition-all flex items-center gap-3"
+                        data-open-waitlist="1"
                     >
                         Уведомить о запуске <ArrowRight className="w-6 h-6" />
                     </button>

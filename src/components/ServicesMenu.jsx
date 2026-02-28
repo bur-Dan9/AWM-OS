@@ -77,6 +77,7 @@ const ServicesMenu = ({ onJoinWaitlist }) => {
                             <button
                                 onClick={() => onJoinWaitlist(service.title)}
                                 className="w-full py-3 rounded-xl border-2 border-brand-purple text-sm font-bold text-brand-purple hover:bg-brand-purple hover:text-white transition-all shadow-sm shadow-brand-purple/20"
+                                data-open-waitlist="1"
                             >
                                 {service.action}
                             </button>

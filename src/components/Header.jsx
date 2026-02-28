@@ -60,6 +60,7 @@ const Header = ({ theme, toggleTheme, onJoinWaitlist }) => {
                     <button
                         onClick={onJoinWaitlist}
                         className="text-sm font-bold text-white px-6 py-2.5 rounded-full bg-brand-purple hover:bg-brand-magenta transition-all shadow-md shadow-brand-purple/20"
+                        data-open-waitlist="1"
                     >
                         Начать работу
                     </button>
@@ -105,6 +106,7 @@ const Header = ({ theme, toggleTheme, onJoinWaitlist }) => {
                                 setIsMobileMenuOpen(false);
                             }}
                             className="bg-brand-purple text-white py-4 rounded-full font-bold shadow-lg shadow-brand-purple/20"
+                            data-open-waitlist="1"
                         >
                             Начать работу
                         </button>
