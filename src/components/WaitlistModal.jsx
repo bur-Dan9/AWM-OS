@@ -143,7 +143,7 @@ const WaitlistModal = ({ isOpen, onClose, service }) => {
                             </p>
 
                             <a
-                                href="https://t.me/awm_os_bot"
+                                href="https://t.me/AWMOS_bot"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-3 w-full bg-brand-purple hover:bg-brand-magenta text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-xl shadow-brand-purple/30"

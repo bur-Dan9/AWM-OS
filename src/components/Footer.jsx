@@ -31,7 +31,7 @@ const Footer = () => {
                     <div className="flex items-center gap-4">
                         {[
                             { icon: <Instagram className="w-5 h-5" />, href: "#" },
-                            { icon: <Send className="w-5 h-5" />, href: "https://t.me/awm_os_bot" }
+                            { icon: <Send className="w-5 h-5" />, href: "https://t.me/AWMOS_bot" }
                         ].map((social, idx) => (
                             <a
                                 key={idx}
