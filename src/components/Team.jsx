@@ -32,9 +32,9 @@ const Team = () => {
                     Комбинация человеческого интеллекта и AI-технологий для вашего превосходства.
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div className="flex overflow-x-auto pb-8 md:grid md:grid-cols-3 gap-6 md:gap-12 snap-x snap-mandatory hide-scrollbar">
                     {members.map((member, idx) => (
-                        <div key={idx} className="glass-card flex flex-col items-center p-8 rounded-3xl hover:translate-y-[-5px] transition-all">
+                        <div key={idx} className="glass-card flex flex-col items-center p-8 rounded-3xl hover:-translate-y-1 transition-all w-[85vw] shrink-0 md:w-auto snap-center">
                             <div className="w-32 h-32 rounded-full overflow-hidden bg-brand-purple/10 dark:bg-brand-purple/5 mb-6 border-2 border-brand-purple/20">
                                 <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
                             </div>
