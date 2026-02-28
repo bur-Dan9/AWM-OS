@@ -21,11 +21,11 @@ const Testimonials = () => {
     ];
 
     return (
-        <section className="w-full relative py-24 px-6 overflow-hidden" id="reviews">
+        <section className="w-full relative py-24 overflow-hidden" id="reviews">
             {/* Subtle glow at section level */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-white/[0.02] rounded-full blur-[150px] pointer-events-none z-[-1]" />
 
-            <div className="max-w-7xl mx-auto">
+            <div className="page-container">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">Реальные результаты в СНГ и Европе</h2>
                     <p className="text-gray-400 max-w-2xl mx-auto">Посмотрите, как мы масштабировали аналогичные бизнесы в вашем регионе. Только реальные цифры прибыли и ROI, а не купленные рейтинги.</p>

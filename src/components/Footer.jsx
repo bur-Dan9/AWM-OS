@@ -1,50 +1,54 @@
 import React from 'react';
-import { Facebook, Instagram, Send } from 'lucide-react';
+import { Instagram, Send } from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer className="w-full bg-[#050505] border-t border-white/10 py-12 px-6 mt-auto relative z-10">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <footer className="w-full bg-bg border-t border-card-border py-16 mt-auto relative z-10" id="contact">
+            <div className="page-container">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-12">
+                    {/* Logo and Copyright */}
+                    <div className="flex flex-col items-center md:items-start gap-4">
+                        <div className="flex items-center gap-2">
+                            <span className="font-display font-bold text-2xl tracking-tighter text-text">
+                                AWM OS
+                            </span>
+                        </div>
+                        <p className="text-muted-text text-sm max-w-xs text-center md:text-left">
+                            Интеллектуальная маркетинговая платформа на базе AI-агентов. Будущее вашего бизнеса начинается здесь.
+                        </p>
+                    </div>
 
-                {/* Logo and Copyright */}
-                <div className="flex flex-col items-center md:items-start gap-3">
-                    <a href="#" className="flex items-center gap-3">
-                        <img src="/logo.png" alt="AWM OS Logo" className="h-10 w-auto object-contain" onError={(e) => { e.target.classList.add('hidden'); }} />
-                        <span className="font-sans font-bold text-2xl tracking-tighter text-white">
-                            AWM OS
-                        </span>
-                    </a>
-                    <p className="text-gray-500 text-sm">
-                        &copy; {new Date().getFullYear()} AWM OS. Все права защищены.
-                    </p>
+                    {/* Links */}
+                    <div className="flex flex-wrap justify-center gap-8 text-sm font-medium text-muted-text">
+                        <a href="#" className="hover:text-brand-purple transition-colors">Главная</a>
+                        <a href="#features" className="hover:text-brand-purple transition-colors">Преимущества</a>
+                        <a href="#services" className="hover:text-brand-purple transition-colors">Услуги</a>
+                        <a href="#press" className="hover:text-brand-purple transition-colors">Процесс</a>
+                        <a href="#reviews" className="hover:text-brand-purple transition-colors">Отзывы</a>
+                    </div>
+
+                    {/* Social Links */}
+                    <div className="flex items-center gap-4">
+                        {[
+                            { icon: <Instagram className="w-5 h-5" />, href: "#" },
+                            { icon: <Send className="w-5 h-5" />, href: "https://t.me/awm_os_bot" }
+                        ].map((social, idx) => (
+                            <a
+                                key={idx}
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 rounded-full bg-bg border border-card-border flex items-center justify-center text-muted-text hover:text-brand-purple hover:border-brand-purple transition-all"
+                            >
+                                {social.icon}
+                            </a>
+                        ))}
+                    </div>
                 </div>
 
-                {/* Social Links */}
-                <div className="flex items-center gap-4">
-                    <a
-                        href="https://facebook.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-magenta hover:border-magenta/50 hover:bg-magenta/10 transition-all duration-300"
-                    >
-                        <Facebook className="w-5 h-5" />
-                    </a>
-                    <a
-                        href="https://instagram.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-magenta hover:border-magenta/50 hover:bg-magenta/10 transition-all duration-300"
-                    >
-                        <Instagram className="w-5 h-5" />
-                    </a>
-                    <a
-                        href="https://t.me/yourtelegram"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-magenta hover:border-magenta/50 hover:bg-magenta/10 transition-all duration-300"
-                    >
-                        <Send className="w-5 h-5" />
-                    </a>
+                <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-card-border text-xs text-muted-text gap-4">
+                    <p>Copyright © AWM OS 2026</p>
+                    <p>Создано с использованием AI для совершенства маркетинга.</p>
                 </div>
             </div>
         </footer>
