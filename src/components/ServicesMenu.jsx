@@ -1,7 +1,17 @@
-import React from 'react';
-import { Sparkles, LayoutGrid, SearchCode, Zap } from 'lucide-react';
-
+import React, { useState, useRef } from 'react';
+import { Sparkles, LayoutGrid, SearchCode, Zap, ArrowRight } from 'lucide-react';
 const ServicesMenu = ({ onJoinWaitlist }) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const scrollRef = useRef(null);
+
+    const handleScroll = () => {
+        if (!scrollRef.current) return;
+        const scrollPosition = scrollRef.current.scrollLeft;
+        const itemWidth = scrollRef.current.clientWidth;
+        const newIndex = Math.round(scrollPosition / itemWidth);
+        setActiveIndex(newIndex);
+    };
+
     const services = [
         {
             icon: <Sparkles className="w-6 h-6" />,
@@ -45,9 +55,13 @@ const ServicesMenu = ({ onJoinWaitlist }) => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div
+                    ref={scrollRef}
+                    onScroll={handleScroll}
+                    className="flex overflow-x-auto pb-4 md:pb-0 md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 snap-x snap-mandatory hide-scrollbar"
+                >
                     {services.map((service, idx) => (
-                        <div key={idx} className="glass-card p-8 rounded-[32px] flex flex-col group border border-slate-200 dark:border-white/5 hover:border-brand-purple/40 transition-all">
+                        <div key={idx} className="glass-card p-8 rounded-[32px] flex flex-col group border border-slate-200 dark:border-white/5 hover:border-brand-purple/40 transition-all w-[85vw] shrink-0 md:w-auto snap-center">
                             <div className="w-12 h-12 rounded-xl bg-brand-purple/10 flex items-center justify-center text-brand-purple mb-6 group-hover:scale-110 transition-transform">
                                 {service.icon}
                             </div>
@@ -68,6 +82,18 @@ const ServicesMenu = ({ onJoinWaitlist }) => {
                             </button>
                         </div>
                     ))}
+                </div>
+
+                {/* Mobile Swipe Indicator */}
+                <div className="flex md:hidden items-center justify-center gap-2 mt-4 text-brand-purple/60">
+                    <div className="flex gap-1.5">
+                        {services.map((_, idx) => (
+                            <div
+                                key={idx}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? "w-4 bg-brand-purple" : "w-1.5 bg-brand-purple/40"}`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

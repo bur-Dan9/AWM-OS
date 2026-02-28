@@ -1,7 +1,18 @@
-import React from 'react';
-import { Clock, ShieldCheck, Briefcase } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Clock, ShieldCheck, Briefcase, ArrowRight } from 'lucide-react';
 
 const WhyUs = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const scrollRef = useRef(null);
+
+    const handleScroll = () => {
+        if (!scrollRef.current) return;
+        const scrollPosition = scrollRef.current.scrollLeft;
+        const itemWidth = scrollRef.current.clientWidth;
+        const newIndex = Math.round(scrollPosition / itemWidth);
+        setActiveIndex(newIndex);
+    };
+
     const reasons = [
         {
             icon: <Clock className="w-8 h-8 text-brand-purple" />,
@@ -35,7 +46,11 @@ const WhyUs = () => {
                     </p>
                 </div>
 
-                <div className="flex overflow-x-auto pb-8 md:grid md:grid-cols-3 gap-8 snap-x snap-mandatory hide-scrollbar">
+                <div
+                    ref={scrollRef}
+                    onScroll={handleScroll}
+                    className="flex overflow-x-auto pb-8 md:grid md:grid-cols-3 gap-8 snap-x snap-mandatory hide-scrollbar"
+                >
                     {reasons.map((reason, idx) => (
                         <div key={idx} className="glass-card p-10 rounded-[32px] hover:border-brand-purple/40 transition-all group w-[85vw] shrink-0 md:w-auto snap-center">
                             <div className="mb-8 p-4 bg-brand-purple/5 rounded-2xl w-fit group-hover:bg-brand-purple/10 transition-colors">
@@ -52,6 +67,18 @@ const WhyUs = () => {
                             </p>
                         </div>
                     ))}
+                </div>
+
+                {/* Mobile Swipe Indicator */}
+                <div className="flex md:hidden items-center justify-center gap-2 mt-4 text-brand-purple/60">
+                    <div className="flex gap-1.5">
+                        {reasons.map((_, idx) => (
+                            <div
+                                key={idx}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? "w-4 bg-brand-purple" : "w-1.5 bg-brand-purple/40"}`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

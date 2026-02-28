@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { ArrowRight, Play, Shield, Zap, BarChart, Users } from 'lucide-react';
 
 const Hero = ({ onJoinWaitlist }) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const scrollRef = useRef(null);
+
+    const handleScroll = () => {
+        if (!scrollRef.current) return;
+        const scrollPosition = scrollRef.current.scrollLeft;
+        const itemWidth = scrollRef.current.clientWidth;
+        const newIndex = Math.round(scrollPosition / itemWidth);
+        setActiveIndex(newIndex);
+    };
+
     return (
         <section className="relative min-h-screen flex flex-col justify-center px-6 pt-32 pb-20">
             {/* Background Glows */}
@@ -79,7 +90,11 @@ const Hero = ({ onJoinWaitlist }) => {
 
             {/* Value Cards Row */}
             <div className="page-container w-full z-10 relative">
-                <div className="flex overflow-x-auto pb-8 md:grid md:grid-cols-3 gap-6 snap-x snap-mandatory hide-scrollbar">
+                <div
+                    ref={scrollRef}
+                    onScroll={handleScroll}
+                    className="flex overflow-x-auto pb-8 md:grid md:grid-cols-3 gap-6 snap-x snap-mandatory hide-scrollbar"
+                >
                     <div className="glass-card p-8 rounded-3xl flex flex-col items-center text-center group hover:translate-y-[-5px] transition-all w-[85vw] shrink-0 md:w-auto snap-center">
                         <div className="w-14 h-14 rounded-2xl bg-brand-purple/10 flex items-center justify-center mb-6 text-brand-purple">
                             <Shield className="w-7 h-7" />
@@ -100,6 +115,18 @@ const Hero = ({ onJoinWaitlist }) => {
                         </div>
                         <h3 className="text-xl font-bold text-text mb-2">Real-time Аналитика</h3>
                         <p className="text-sm text-muted-text leading-relaxed">Молниеносная реакция на изменения рынка и автоматическая корректировка кампаний.</p>
+                    </div>
+                </div>
+
+                {/* Mobile Swipe Indicator */}
+                <div className="flex md:hidden items-center justify-center gap-2 mt-4 text-brand-purple/60 pb-6">
+                    <div className="flex gap-1.5">
+                        {[0, 1, 2].map((idx) => (
+                            <div
+                                key={idx}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? "w-4 bg-brand-purple" : "w-1.5 bg-brand-purple/40"}`}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>

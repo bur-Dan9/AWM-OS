@@ -1,7 +1,18 @@
-import React from 'react';
-import { Star, MessageCircle } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Star, MessageCircle, ArrowRight } from 'lucide-react';
 
 const Reviews = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const scrollRef = useRef(null);
+
+    const handleScroll = () => {
+        if (!scrollRef.current) return;
+        const scrollPosition = scrollRef.current.scrollLeft;
+        const itemWidth = scrollRef.current.clientWidth;
+        const newIndex = Math.round(scrollPosition / itemWidth);
+        setActiveIndex(newIndex);
+    };
+
     const reviews = [
         {
             text: "AWM OS полностью изменил наш подход к рекламе. Мы сократили расходы на агентства и получили рост ROI на 140% всего за месяц.",
@@ -35,7 +46,11 @@ const Reviews = () => {
                     </p>
                 </div>
 
-                <div className="flex overflow-x-auto pb-8 md:grid md:grid-cols-3 gap-8 snap-x snap-mandatory hide-scrollbar">
+                <div
+                    ref={scrollRef}
+                    onScroll={handleScroll}
+                    className="flex overflow-x-auto pb-8 md:grid md:grid-cols-3 gap-8 snap-x snap-mandatory hide-scrollbar"
+                >
                     {reviews.map((review, idx) => (
                         <div key={idx} className="glass-card p-10 rounded-[32px] flex flex-col h-full relative w-[85vw] shrink-0 md:w-auto snap-center">
                             <div className="absolute top-8 right-10 text-brand-purple/20">
@@ -55,6 +70,18 @@ const Reviews = () => {
                             </div>
                         </div>
                     ))}
+                </div>
+
+                {/* Mobile Swipe Indicator */}
+                <div className="flex md:hidden items-center justify-center gap-2 mt-4 text-brand-purple/60">
+                    <div className="flex gap-1.5">
+                        {reviews.map((_, idx) => (
+                            <div
+                                key={idx}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? "w-4 bg-brand-purple" : "w-1.5 bg-brand-purple/40"}`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
