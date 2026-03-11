@@ -44,7 +44,7 @@ const Hero = ({ onJoinWaitlist }) => {
 
                     <div className="flex flex-wrap items-center gap-4 mb-12">
                         <a
-                            href="https://www.instagram.com/awm_0s?igsh=MTg0b2h4YjRlZHlmZA%3D%3D&utm_source=qr"
+                            href="https://t.me/AWMOS_bot"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-gradient-to-r from-brand-purple to-brand-magenta text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg shadow-brand-purple/25 hover:scale-105 transition-all flex items-center gap-2"

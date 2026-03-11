@@ -23,7 +23,7 @@ const FinalCTA = ({ onJoinWaitlist }) => {
                     </p>
 
                     <a
-                        href="https://www.instagram.com/awm_0s?igsh=MTg0b2h4YjRlZHlmZA%3D%3D&utm_source=qr"
+                        href="https://t.me/AWMOS_bot"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="bg-gradient-to-r from-brand-purple to-brand-magenta text-white px-12 py-5 rounded-full font-bold text-xl shadow-2xl shadow-brand-purple/40 hover:scale-105 transition-all flex items-center gap-3"

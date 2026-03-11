@@ -58,7 +58,7 @@ const Header = ({ theme, toggleTheme, onJoinWaitlist }) => {
                         {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                     </button>
                     <a
-                        href="https://www.instagram.com/awm_0s?igsh=MTg0b2h4YjRlZHlmZA%3D%3D&utm_source=qr"
+                        href="https://t.me/AWMOS_bot"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm font-bold text-white px-6 py-2.5 rounded-full bg-brand-purple hover:bg-brand-magenta transition-all shadow-md shadow-brand-purple/20"
@@ -102,7 +102,7 @@ const Header = ({ theme, toggleTheme, onJoinWaitlist }) => {
                     </ul>
                     <div className="flex flex-col gap-4 pt-6 border-t border-card-border">
                         <a
-                            href="https://www.instagram.com/awm_0s?igsh=MTg0b2h4YjRlZHlmZA%3D%3D&utm_source=qr"
+                            href="https://t.me/AWMOS_bot"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-brand-purple text-white py-4 rounded-full font-bold shadow-lg shadow-brand-purple/20 text-center block"
