@@ -30,7 +30,8 @@ const Hero = ({ onJoinWaitlist }) => {
                         AWM OS Beta: Осталось 12 мест на этот месяц
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-display font-bold leading-[1.1] tracking-tight text-text mb-6">
+                    <h1 className="font-display font-bold leading-[1.1] tracking-tight text-text mb-6"
+                        style={{ fontSize: 'clamp(28px, 9vw, 72px)' }}>
                         AWM OS: <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-magenta">
                             ВАШ МАРКЕТИНГ <br /> НА АВТОПИЛОТЕ
@@ -42,19 +43,25 @@ const Hero = ({ onJoinWaitlist }) => {
                     </p>
 
                     <div className="flex flex-wrap items-center gap-4 mb-12">
-                        <button
-                            onClick={onJoinWaitlist}
+                        <a
+                            href="https://www.instagram.com/awm_0s?igsh=MTg0b2h4YjRlZHlmZA%3D%3D&utm_source=qr"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="bg-gradient-to-r from-brand-purple to-brand-magenta text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg shadow-brand-purple/25 hover:scale-105 transition-all flex items-center gap-2"
-                            data-open-waitlist="1"
                         >
                             Вступить в Waitlist <ArrowRight className="w-5 h-5" />
-                        </button>
-                        <button className="flex items-center gap-2 px-8 py-4 rounded-full font-bold text-lg text-text border border-card-border hover:bg-gray-50/10 transition-all">
+                        </a>
+                        <a
+                            href="https://www.instagram.com/awm_0s?igsh=MTg0b2h4YjRlZHlmZA%3D%3D&utm_source=qr"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-8 py-4 rounded-full font-bold text-lg text-text border border-card-border hover:bg-gray-50/10 transition-all"
+                        >
                             <div className="w-8 h-8 rounded-full bg-brand-purple flex items-center justify-center">
                                 <Play className="w-4 h-4 text-white fill-white" />
                             </div>
                             Смотреть демо
-                        </button>
+                        </a>
                     </div>
                 </div>
 

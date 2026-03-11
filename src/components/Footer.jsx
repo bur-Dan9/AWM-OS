@@ -30,7 +30,7 @@ const Footer = () => {
                     {/* Social Links */}
                     <div className="flex items-center gap-4">
                         {[
-                            { icon: <Instagram className="w-5 h-5" />, href: "#" },
+                            { icon: <Instagram className="w-5 h-5" />, href: "https://www.instagram.com/awm_0s?igsh=MTg0b2h4YjRlZHlmZA%3D%3D&utm_source=qr" },
                             { icon: <Send className="w-5 h-5" />, href: "https://t.me/AWMOS_bot" }
                         ].map((social, idx) => (
                             <a
